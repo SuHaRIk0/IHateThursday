@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Tessel_on_the_palm/1.0.0": {
+        "runtime": {
+          "Tessel_on_the_palm.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Tessel_on_the_palm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

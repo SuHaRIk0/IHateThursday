@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "7ND1cz5h+aL/bH8vOSEqQQA8Me6d7p/wU5wlkxorhqte30Rry5FEj9K1YX7xJPlDD3vvYnWBL1Z7anqet9sfCQ==",
+  "dgSpecHash": "RSv4zjoJF6RKwRdlGb2LMzgfTDcwbcRPN3RwEfJgMcW50rsZv1zaAqE5QFXZ8vEp5XwVGqWp8eYdw8pTHyuw2g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\IHateThursday-develop\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\University\\3_course\\2_sem\\Prog_ing\\TOP\\v1\\TasselOnthePalm\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
+  ],
   "logs": []
 }

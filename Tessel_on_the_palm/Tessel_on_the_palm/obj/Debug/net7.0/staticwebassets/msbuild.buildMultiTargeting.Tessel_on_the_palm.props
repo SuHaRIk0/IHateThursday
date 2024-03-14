@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Tessel_on_the_palm.props" />
+</Project>
