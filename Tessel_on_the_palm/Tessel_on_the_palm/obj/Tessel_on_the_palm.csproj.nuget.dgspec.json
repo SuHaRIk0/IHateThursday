@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\University\\3_course\\2_sem\\Prog_ing\\TOP\\v1\\TasselOnthePalm\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj": {}
+    "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj": {}
   },
   "projects": {
-    "D:\\University\\3_course\\2_sem\\Prog_ing\\TOP\\v1\\TasselOnthePalm\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj": {
+    "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\University\\3_course\\2_sem\\Prog_ing\\TOP\\v1\\TasselOnthePalm\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
+        "projectUniqueName": "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
         "projectName": "Tessel_on_the_palm",
-        "projectPath": "D:\\University\\3_course\\2_sem\\Prog_ing\\TOP\\v1\\TasselOnthePalm\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\University\\3_course\\2_sem\\Prog_ing\\TOP\\v1\\TasselOnthePalm\\Tessel_on_the_palm\\Tessel_on_the_palm\\obj\\",
+        "projectPath": "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
+        "packagesPath": "C:\\Users\\My\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\My\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,9 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "default"
         }
       },
       "frameworks": {
@@ -58,24 +50,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -84,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
