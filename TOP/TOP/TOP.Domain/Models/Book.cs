@@ -1,4 +1,4 @@
-﻿namespace YourNamespace.Models
+﻿namespace TOP.Models
 {
     public class Book
     {

@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using TOP.Models;
 
-namespace TOP.Models
+namespace TOP.Infrastructure.Data
 {
-    public class TOPDbContext : DbContext
+    public class TopDbContext : DbContext
     {
-        public TOPDbContext(DbContextOptions<TOPDbContext> options) : base(options) { }
+        public TopDbContext(DbContextOptions<TopDbContext> options) : base(options) { }
 
         public DbSet<CommonUser> CommonUsers { get; set; }
         public DbSet<Author> Authors { get; set; }

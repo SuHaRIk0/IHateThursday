@@ -1,5 +1,7 @@
 using System;
 using Serilog;
+using TOP.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace TOP
@@ -8,24 +10,26 @@ namespace TOP
     {
         public static async Task Main(string[] args)
         {
+            var builder = WebApplication.CreateBuilder(args);
+
+            var connectionString = "Host=cdgn4ufq38ipd0.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com;Port=5432;Database=da34olh1r8hn0a;Username=uek3pbiak18apr;Password=p5b55330b733d41afb15c201e028d0d46ba93064bdc56375cf76b9d206cb2640f";
+
+            builder.Services.AddDbContext<TopDbContext>(options =>
+                options.UseNpgsql(connectionString));
+
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
                 .WriteTo.File("logs/TOP.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
-            var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

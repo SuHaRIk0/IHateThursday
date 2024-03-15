@@ -1,4 +1,4 @@
-namespace Tessel_on_the_palm.Models
+namespace TOP.Models
 {
     public class ErrorViewModel
     {
