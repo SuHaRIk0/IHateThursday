@@ -11,7 +11,7 @@ namespace TOP
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
-                .WriteTo.File("logs/TasselOnThePalm.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.File("logs/TOP.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
             var builder = WebApplication.CreateBuilder(args);
