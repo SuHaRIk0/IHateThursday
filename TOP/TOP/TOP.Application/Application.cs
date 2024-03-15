@@ -1,9 +1,6 @@
-﻿namespace YourNamespace.Models
+﻿namespace TOP.Models
 {
-    public class Admin
+    public class Applicat
     {
-        public int Id { get; set; }
-        public string TagUser { get; set; }
-        public CommonUser User { get; set; }
     }
 }

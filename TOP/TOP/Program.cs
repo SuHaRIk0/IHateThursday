@@ -2,6 +2,7 @@ using System;
 using Serilog;
 using TOP.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 
 namespace TOP

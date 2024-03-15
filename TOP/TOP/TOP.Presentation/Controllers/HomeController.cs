@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Tessel_on_the_palm.Models;
+using TOP.Models;
 
-namespace Tessel_on_the_palm.Controllers
+namespace TOP.Controllers
 {
     public class HomeController : Controller
     {

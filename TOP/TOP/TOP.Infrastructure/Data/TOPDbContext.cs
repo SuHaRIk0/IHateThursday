@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using TOP.Models;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace TOP.Infrastructure.Data
 {
