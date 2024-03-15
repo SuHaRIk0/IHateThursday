@@ -2,7 +2,7 @@ using System;
 using Serilog;
 
 
-namespace Tessel_on_the_palm
+namespace TOP
 {
     public static class Program
     {
