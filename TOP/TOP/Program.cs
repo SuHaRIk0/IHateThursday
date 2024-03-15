@@ -16,12 +16,20 @@ namespace TOP
             builder.Services.AddDbContext<TopDbContext>(options =>
                 options.UseNpgsql(connectionString));
 
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
+            builder.Host.UseSerilog((context, config) =>
+            {
+                config.MinimumLevel.Debug()
                 .WriteTo.Console()
                 .WriteTo.File("logs/TOP.txt", rollingInterval: RollingInterval.Day)
-                .WriteTo.Seq("http://localhost:5341")
-                .CreateLogger();
+                .WriteTo.Seq("http://localhost:5341");
+            });
+
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Debug()
+            //    .WriteTo.Console()
+            //    .WriteTo.File("logs/TOP.txt", rollingInterval: RollingInterval.Day)
+            //    .WriteTo.Seq("http://localhost:5341")
+            //    .CreateLogger();
 
             builder.Services.AddControllersWithViews();
 
