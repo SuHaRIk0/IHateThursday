@@ -1,8 +1,6 @@
-using System;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using TOP.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 
 
 namespace TOP
@@ -22,6 +20,7 @@ namespace TOP
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
                 .WriteTo.File("logs/TOP.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.Seq("http://localhost:5341")
                 .CreateLogger();
 
             builder.Services.AddControllersWithViews();
