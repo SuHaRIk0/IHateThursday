@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\vadum\Downloads\schoolwork\SECOND_SEM\PE\TOP\Tessel_on_the_palm\Tessel_on_the_palm
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/vadum/AppData/Roaming/SonarLint for Visual Studio/Bindings/Tessel_on_the_palm/csharp/SonarLint.xml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vadum/Downloads/schoolwork/SECOND_SEM/PE/TOP/Tessel_on_the_palm/Tessel_on_the_palm/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
