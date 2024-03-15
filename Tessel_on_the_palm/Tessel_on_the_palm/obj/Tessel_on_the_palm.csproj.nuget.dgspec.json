@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj": {}
+    "C:\\Users\\vadum\\Downloads\\schoolwork\\SECOND_SEM\\PE\\TOP\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj": {
+    "C:\\Users\\vadum\\Downloads\\schoolwork\\SECOND_SEM\\PE\\TOP\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
+        "projectUniqueName": "C:\\Users\\vadum\\Downloads\\schoolwork\\SECOND_SEM\\PE\\TOP\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
         "projectName": "Tessel_on_the_palm",
-        "projectPath": "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
-        "packagesPath": "C:\\Users\\My\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\My\\Source\\Repos\\IHateThursday\\Tessel_on_the_palm\\Tessel_on_the_palm\\obj\\",
+        "projectPath": "C:\\Users\\vadum\\Downloads\\schoolwork\\SECOND_SEM\\PE\\TOP\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
+        "packagesPath": "C:\\Users\\vadum\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vadum\\Downloads\\schoolwork\\SECOND_SEM\\PE\\TOP\\Tessel_on_the_palm\\Tessel_on_the_palm\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\My\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vadum\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
