@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "IlxC5EMe8ICLUwzUXTrrgZJM0k7fuVxc82QZHeXnd8rGAWe5mh9PvNx0AnBAm++p0K8oHsFVpbdhkg+kicVcTQ==",
+  "dgSpecHash": "0J/2gqsXfko5CnrU06saep2IUdZW2vE/vBGm+R9MqHrRykV6UELVroeWKqmTFMUPkGMaINuEteAgM7iB+p7mFA==",
   "success": true,
   "projectFilePath": "C:\\Users\\vadum\\Downloads\\schoolwork\\SECOND_SEM\\PE\\TOP\\Tessel_on_the_palm\\Tessel_on_the_palm\\Tessel_on_the_palm.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\vadum\\.nuget\\packages\\serilog\\3.1.1\\serilog.3.1.1.nupkg.sha512",
+    "C:\\Users\\vadum\\.nuget\\packages\\serilog.sinks.console\\5.0.1\\serilog.sinks.console.5.0.1.nupkg.sha512",
+    "C:\\Users\\vadum\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,9 +1,19 @@
+using System;
+using Serilog;
+
+
 namespace Tessel_on_the_palm
 {
-    public class Program
+    public static class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .WriteTo.File("logs/TasselOnThePalm.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -19,18 +29,57 @@ namespace Tessel_on_the_palm
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            try
+            {
+                Log.Debug("Trying to use HTTPs redirection...");
+                app.UseHttpsRedirection();
+                Log.Information("Redirection successful!");
+            }
+            catch(Exception ex)
+            {
+                Log.Error($"Something went wrong! Details {ex.Message}");
+            }
             app.UseStaticFiles();
 
-            app.UseRouting();
+            try
+            {
+                Log.Debug("Trying to use routing...");
+                app.UseRouting();
+                Log.Information("Routing successful!");
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Something went wrong! Details {ex.Message}");
+            }
 
-            app.UseAuthorization();
+            try
+            {
+                Log.Debug("Trying to use authorization...");
+                app.UseAuthorization();
+                Log.Information("Authorization successful!");
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Something went wrong! Details {ex.Message}");
+            }
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            app.Run();
+            try 
+            {
+                Log.Debug("Trying to run the program...");
+                app.Run();
+            }
+            catch (Exception ex) 
+            {
+                Log.Error($"Something went wrong! Details {ex.Message}");
+            }
+            finally
+            {
+                await Log.CloseAndFlushAsync();
+            }
         }
     }
 }

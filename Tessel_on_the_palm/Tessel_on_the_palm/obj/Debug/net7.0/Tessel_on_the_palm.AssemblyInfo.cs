@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tessel_on_the_palm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9da4d157182f6a00ff03adbfe3fcddfd82eaab1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tessel_on_the_palm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tessel_on_the_palm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
