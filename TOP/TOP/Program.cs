@@ -24,13 +24,6 @@ namespace TOP
                 .WriteTo.Seq("http://localhost:5341");
             });
 
-            //Log.Logger = new LoggerConfiguration()
-            //    .MinimumLevel.Debug()
-            //    .WriteTo.Console()
-            //    .WriteTo.File("logs/TOP.txt", rollingInterval: RollingInterval.Day)
-            //    .WriteTo.Seq("http://localhost:5341")
-            //    .CreateLogger();
-
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
@@ -40,14 +33,11 @@ namespace TOP
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
            
             app.UseRouting();
-
             
             app.UseAuthorization();
 
@@ -55,7 +45,6 @@ namespace TOP
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            
             app.Run();
         }
     }
