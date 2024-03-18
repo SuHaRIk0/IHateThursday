@@ -41,57 +41,22 @@ namespace TOP
                 app.UseHsts();
             }
 
-            try
-            {
-                Log.Debug("Trying to use HTTPs redirection...");
-                app.UseHttpsRedirection();
-                Log.Information("Redirection successful!");
-            }
-            catch(Exception ex)
-            {
-                Log.Error($"Something went wrong! Details {ex.Message}");
-            }
+            
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            try
-            {
-                Log.Debug("Trying to use routing...");
-                app.UseRouting();
-                Log.Information("Routing successful!");
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"Something went wrong! Details {ex.Message}");
-            }
+           
+            app.UseRouting();
 
-            try
-            {
-                Log.Debug("Trying to use authorization...");
-                app.UseAuthorization();
-                Log.Information("Authorization successful!");
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"Something went wrong! Details {ex.Message}");
-            }
+            
+            app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            try 
-            {
-                Log.Debug("Trying to run the program...");
-                app.Run();
-            }
-            catch (Exception ex) 
-            {
-                Log.Error($"Something went wrong! Details {ex.Message}");
-            }
-            finally
-            {
-                await Log.CloseAndFlushAsync();
-            }
+            
+            app.Run();
         }
     }
 }
