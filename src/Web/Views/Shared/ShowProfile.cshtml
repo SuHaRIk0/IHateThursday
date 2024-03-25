@@ -1,0 +1,20 @@
+﻿@model Web.Models.ProfileViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <h1>User Profile</h1>
+    <div>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Tag:</strong> @Model.Tag</p>
+        <p><strong>Description:</strong> @Model.Description</p>
+        <p><strong>Genres Readed:</strong> @Model.GenresReaded</p>
+    </div>
+</body>
+</html>
