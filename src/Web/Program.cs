@@ -3,12 +3,17 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-var connectionString = "Host=localhost;Port=5433;Database=TopDb1;Username=postgres;Password=1807";
+var configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json", optional: true)
+    .Build();
+
+string connectionString = configuration.GetConnectionString("PostgreSQLConnection");
 
 builder.Services.AddDbContext<TopDbContext>(options =>
     options.UseNpgsql(connectionString));
