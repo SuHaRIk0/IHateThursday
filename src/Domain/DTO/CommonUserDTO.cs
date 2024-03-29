@@ -2,7 +2,7 @@
 
 namespace Domain.DTO
 {
-    public class CommonUserDTO
+    public class CommonUserDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -10,7 +10,7 @@ namespace Domain.DTO
         public string Description { get; set; }
         public string GenresReaded { get; set; }
 
-        public CommonUserDTO(CommonUser proto) 
+        public CommonUserDto(CommonUser proto) 
         {
             Id = proto.Id;
             Name = proto.Name;

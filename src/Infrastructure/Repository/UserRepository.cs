@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
 {
-    public class RecomendationRepository : IRecomendationRepository
+    public class UserRepository : IUserRepository
     {
         private readonly TopDbContext _dbContext;
 
-        public RecomendationRepository(TopDbContext dbContext)
+        public UserRepository(TopDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<CommonUserDTO?> GetUserByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<CommonUserDto?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            return new CommonUserDTO(await _dbContext.Set<CommonUser>()
+            return new CommonUserDto(await _dbContext.Set<CommonUser>()
                 .FirstOrDefaultAsync(u => u.Id == id, cancellationToken));
         }
     }

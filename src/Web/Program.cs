@@ -1,4 +1,8 @@
+using Application.Services;
+using Domain.IRepository;
+using Domain.IService;
 using Infrastructure.Data;
+using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -22,6 +26,11 @@ builder.Host.UseSerilog((context, config) =>
         .WriteTo.File("logs/TOP.txt", rollingInterval: RollingInterval.Day)
         .WriteTo.Seq("http://localhost:5341");
 });
+
+// Adding services and repositories. Better to move to another file in the future
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IRecomendationService, RecomendationService>();
 
 var app = builder.Build();
 
@@ -48,6 +57,11 @@ app.UseEndpoints(endpoints =>
         name: "profile",
         pattern: "Profile/{action=ShowProfile}/{id?}",
         defaults: new { controller = "Profile" });
+
+    endpoints.MapControllerRoute(
+        name: "recomendations",
+        pattern: "Recomendations/{action=GetRecomendations}/{id?}",
+        defaults: new { controller = "Recomendations" });
 });
 
 app.Run();
