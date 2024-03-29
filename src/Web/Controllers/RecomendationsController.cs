@@ -15,7 +15,7 @@ namespace Web.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRecomendations(int id)
         {
-            var books = _recomendationService.GetRecomendations(id);
+            var books = await _recomendationService.GetRecomendationsAsync(id);
             if (books == null) {
                 return NotFound();
             }

@@ -19,34 +19,23 @@ namespace Application.Services
             _logger = logger;
         }
 
-        public IEnumerable<BookDto> GetRecomendations(int id)
+        public async Task<IEnumerable<BookDto>> GetRecomendationsAsync(int id)
         {
-            try
-            {
-                _logger.LogInformation("Started database operations...");
-                _logger.LogDebug("Retrieving user data from CommonUsers table...");
+            _logger.LogInformation("Started database operations...");
+            _logger.LogInformation("Retrieving user data from CommonUsers table...");
 
-                var taskOne = _userRepository.GetByIdAsync(id);
-                taskOne.Wait();
-                var dummy = taskOne.Result;
+            var dummy = await _userRepository.GetByIdAsync(id);
 
-                _logger.LogInformation("Retrivial successful!");
+            _logger.LogInformation("Retrivial successful!");
 
 
-                _logger.LogDebug("Retrieving book data from Books table...");
+            _logger.LogInformation("Retrieving book data from Books table...");
 
-                var taskTwo = _bookRepository.GetByGenreAsync(dummy.GenresReaded);
-                taskTwo.Wait();
+            var result = await _bookRepository.GetByGenreAsync(dummy.GenresReaded);
 
-                _logger.LogInformation("Retrivial successful!");
+            _logger.LogInformation("Retrivial successful!");
 
-                return taskTwo.Result;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Oops! Something went wrong! Details: {0}", ex.Message);
-                return null;
-            }
+            return result;
         }
     }
 }

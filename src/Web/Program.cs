@@ -60,7 +60,7 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapControllerRoute(
         name: "recomendations",
-        pattern: "Recomendations/{action=GetRecomendations}/{id?}",
+        pattern: "Recomendations/{action=GetRecomendationsAsync}/{id?}",
         defaults: new { controller = "Recomendations" });
 });
 

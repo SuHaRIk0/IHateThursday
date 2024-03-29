@@ -4,6 +4,6 @@ namespace Domain.IService
 {
     public interface IRecomendationService
     {
-        IEnumerable<BookDto> GetRecomendations(int id);
+        Task<IEnumerable<BookDto>> GetRecomendationsAsync(int id);
     }
 }
