@@ -1,9 +1,9 @@
-﻿using Domain.DTO;
+﻿using Domain.Entities;
 
 namespace Domain.IService
 {
     public interface IRecomendationService
     {
-        Task<IEnumerable<BookDto>> GetRecomendationsAsync(int id);
+        Task<IEnumerable<Book>?> GetRecomendationsAsync(int id);
     }
 }

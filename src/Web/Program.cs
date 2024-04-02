@@ -31,6 +31,8 @@ builder.Host.UseSerilog((context, config) =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IRecomendationService, RecomendationService>();
+builder.Services.AddScoped<IBookTransformService, BookTransformService>();
+
 
 var app = builder.Build();
 

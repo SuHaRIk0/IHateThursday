@@ -1,4 +1,4 @@
-﻿@model List<BookDto>
+﻿@model BookDto[]
 
 <!DOCTYPE html>
 <html>
@@ -6,27 +6,39 @@
     <title>Recomendations</title>
 </head>
 <body>
-    <h1>Ось, що ми для вас знайшли :)</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Назва</th>
-                <th>Автор</th>
-                <th>Опис</th>
-                <th>Стан</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(int i=0;i < 2;i++)
-            {
-                <tr>
-                    <td>@Model[i].Title</td>
-                    <td>@Model[i].AuthorName</td>
-                    <td>@Model[i].Description</td>
-                    <td>@Model[i].Status</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @{
+        if(Model.GetLength(0) == 0)
+        {
+            <h1>Вибачте, але ми не знайшли книжок, які були б вам до вподоби :(</h1>
+        }
+        else
+        {
+            <h1>Ось, що ми для вас знайшли :)</h1>
+            <h2></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                        <th>Автор</th>
+                        <th>Опис</th>
+                        <th>Стан</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        for (int i = 0; i < Model.GetLength(0); i++)
+                        {
+                            <tr>
+                                <td>@Model[i].Title</td>
+                                <td>@Model[i].AuthorName</td>
+                                <td>@Model[i].Description</td>
+                                <td>@Model[i].Status</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    }
 </body>
 </html>

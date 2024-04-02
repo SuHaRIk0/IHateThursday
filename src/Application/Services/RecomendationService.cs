@@ -1,4 +1,4 @@
-﻿using Domain.DTO;
+﻿using Domain.Entities;
 using Domain.IRepository;
 using Domain.IService;
 using Microsoft.Extensions.Logging;
@@ -19,7 +19,7 @@ namespace Application.Services
             _logger = logger;
         }
 
-        public async Task<IEnumerable<BookDto>> GetRecomendationsAsync(int id)
+        public async Task<IEnumerable<Book>?> GetRecomendationsAsync(int id)
         {
             _logger.LogInformation("Started database operations...");
             _logger.LogInformation("Retrieving user data from CommonUsers table...");
@@ -33,8 +33,14 @@ namespace Application.Services
 
             var result = await _bookRepository.GetByGenreAsync(dummy.GenresReaded);
 
-            _logger.LogInformation("Retrivial successful!");
-
+            if (result == null)
+            {
+                _logger.LogInformation("Retrivial UNsuccessful! The result is NULL!");
+            }
+            else
+            {
+                _logger.LogInformation("Retrivial successful!");
+            }
             return result;
         }
     }
