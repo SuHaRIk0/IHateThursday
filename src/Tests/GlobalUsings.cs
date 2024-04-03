@@ -1,1 +1,11 @@
 global using Xunit;
+global using Application.Services;
+global using Domain.DTO;
+global using Domain.Entities;
+global using Domain.IService;
+global using Domain.IRepository;
+global using Microsoft.Extensions.Logging;
+global using Moq;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;

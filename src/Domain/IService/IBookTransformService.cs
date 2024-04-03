@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Domain.IService
 {
-    public interface IBookTransformService
+    public interface IBookTransformService: IService
     {
         Task<IEnumerable<BookDto>?> GetBookDtosAsync(IEnumerable<Book>? books);
     }

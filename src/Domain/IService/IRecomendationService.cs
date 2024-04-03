@@ -2,7 +2,7 @@
 
 namespace Domain.IService
 {
-    public interface IRecomendationService
+    public interface IRecomendationService: IService
     {
         Task<IEnumerable<Book>?> GetRecomendationsAsync(int id);
     }
