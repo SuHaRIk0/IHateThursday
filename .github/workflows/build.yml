@@ -43,7 +43,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"SuHaRIk0_TassleOnthePalm" /o:"ihatethursday" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.dotnet.excludeTestProjects=false /d:sonar.msbuild.testProjectPattern=Advanced
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"SuHaRIk0_TassleOnthePalm" /o:"ihatethursday" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.xunit.reportsPaths=".\src\Tests\XUnitResults.xml"
           dotnet build .\src\Web\Web.csproj
-          dotnet test .\src\Tests\Tests.csproj --collect:"XPlat Code Coverage" --settings coverlet.runsettings
+          dotnet test .\src\Tests\Tests.csproj
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
