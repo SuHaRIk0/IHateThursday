@@ -45,5 +45,5 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"SuHaRIk0_TassleOnthePalm" /o:"ihatethursday" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.xunit.reportsPaths=".\src\Tests\XUnitResults.xml"
           dotnet build .\src\Web\Web.csproj
-          dotnet test .\src\Tests\Tests.csproj
+          dotnet test --logger:"xunit;LogFilePath=XUnitResults.xml" .\src\Tests\Tests.csproj
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
