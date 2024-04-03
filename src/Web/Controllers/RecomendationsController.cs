@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
 {
+    [Route("[controller]/{action=GetRecomendations}")]
     public class RecomendationsController : Controller
     {
         private readonly IRecomendationService _recomendationService;
@@ -14,6 +15,7 @@ namespace Web.Controllers
             _bookTransformService = bookTransformService;
         }
 
+        // Matches Recomendations/GetRecomendations/2
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRecomendations(int id)
         {

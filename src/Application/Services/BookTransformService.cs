@@ -32,14 +32,7 @@ namespace Application.Services
 
             var result = await Task.WhenAll(tasks);
 
-            if (result.Length == 0)
-            {
-                _logger.LogInformation("Failed! The result is still NULL!");
-            }
-            else
-            {
-                _logger.LogInformation("Conversion successful!");
-            }
+            _logger.LogInformation("Conversion successful!");
 
             return result;
         }

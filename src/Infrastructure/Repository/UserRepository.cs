@@ -14,7 +14,7 @@ namespace Infrastructure.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<CommonUser> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<CommonUser?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
             return await _dbContext.Set<CommonUser>()
                 .FirstOrDefaultAsync(u => u.Id == id, cancellationToken);

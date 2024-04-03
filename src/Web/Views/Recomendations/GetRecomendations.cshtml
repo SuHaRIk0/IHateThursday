@@ -1,20 +1,24 @@
 ﻿@model BookDto[]
 
 <!DOCTYPE html>
-<html>
+<html lang="en" xml:lang="en">
 <head>
     <title>Recomendations</title>
 </head>
 <body>
     @{
-        if(Model.GetLength(0) == 0)
+        if(Model == null)
         {
-            <h3>Вибачте, але ми не знайшли книжок, які були б вам до вподоби :(</h3>
+            <p>Користувача з таким ID не існує!</p>
+        }
+        else if(Model.GetLength(0) == 0)
+        {
+            <p>Вибачте, але ми не знайшли книжок, які були б вам до вподоби :(</p>
         }
         else
         {
-            <table>
-                <caprion>Ось, що ми для вас знайшли :)</caprion>
+            <p id="recomendationtbl">Ось, що ми для вас знайшли :)</p>
+            <table aria-describedby="recomendationtbl">
                 <thead>
                     <tr>
                         <th>Назва</th>
