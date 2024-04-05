@@ -9,3 +9,6 @@ global using Moq;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Threading.Tasks;
+global using Infrastructure.Data;
+global using Infrastructure.Repository;
+global using Microsoft.EntityFrameworkCore;
