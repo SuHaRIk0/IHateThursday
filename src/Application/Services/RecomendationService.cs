@@ -19,16 +19,16 @@ namespace Application.Services
             _logger = logger;
         }
 
-        public async Task<IEnumerable<Book>?> GetRecomendationsAsync(int id)
+        public async Task<IEnumerable<Book>?> GetRecomendationsAsync(int id, CancellationToken cancellationToken=default)
         {
             _logger.LogInformation("Started database operations...");
 
-            var dummy = await _userRepository.GetByIdAsync(id);
+            var dummy = await _userRepository.GetByIdAsync(id, cancellationToken);
 
             if (dummy != null)
             {
                 _logger.LogInformation("Retrivial successful!");
-                return await _bookRepository.GetByGenreAsync(dummy.GenresReaded);
+                return await _bookRepository.GetByGenreAsync(dummy.GenresReaded, cancellationToken);
             }
 
             _logger.LogInformation("Retrivial UNsuccessful! The result is NULL!");

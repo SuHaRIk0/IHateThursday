@@ -14,7 +14,7 @@ namespace Application.Services
             _logger = logger;
         }
 
-        public async Task<IEnumerable<BookDto>?> GetBookDtosAsync(IEnumerable<Book>? books)
+        public async Task<IEnumerable<BookDto>?> GetBookDtosAsync(IEnumerable<Book>? books, CancellationToken cancellationToken=default)
         {
             _logger.LogInformation("Trying to convert books type...");
 
@@ -37,5 +37,20 @@ namespace Application.Services
             return result;
         }
 
+        public async Task<BookDto?> GetBookDtosAsync(Book? book, CancellationToken cancellationToken=default)
+        {
+            _logger.LogInformation("Trying to convert book type...");
+
+            if (book == null) 
+            {
+                _logger.LogInformation("Input object is null, returning null.");
+                return null;
+            }
+            var bookDto = await Task.Run(() => new BookDto(book));
+
+            _logger.LogInformation("Conversion successful!");
+
+            return bookDto;
+        }
     }
 }

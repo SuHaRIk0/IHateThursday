@@ -17,11 +17,11 @@ namespace Web.Controllers
 
         // Matches Recomendations/GetRecomendations/2
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRecomendations(int id)
+        public async Task<IActionResult> GetRecomendations(int id, CancellationToken cancellationToken = default)
         {
-            var books = await _recomendationService.GetRecomendationsAsync(id);
+            var books = await _recomendationService.GetRecomendationsAsync(id, cancellationToken);
             
-            return View(await _bookTransformService.GetBookDtosAsync(books));
+            return View(await _bookTransformService.GetBookDtosAsync(books, cancellationToken));
         }
     }
 }

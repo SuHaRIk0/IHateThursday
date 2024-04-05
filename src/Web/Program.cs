@@ -32,6 +32,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IRecomendationService, RecomendationService>();
 builder.Services.AddScoped<IBookTransformService, BookTransformService>();
+builder.Services.AddScoped<IBookSearchService, BookSearchService>();
 
 
 var app = builder.Build();
@@ -64,6 +65,11 @@ app.UseEndpoints(endpoints =>
         name: "recomendations",
         pattern: "Recomendations/{action=GetRecomendations}/{id?}",
         defaults: new { controller = "Recomendations" });
+
+    //endpoints.MapControllerRoute(
+    //    name: "search",
+    //    pattern: "Search/{action=GetSearch}.{title?}",
+    //    defaults: new { controller = "Search" });
 });
 
 app.Run();

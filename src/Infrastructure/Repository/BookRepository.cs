@@ -20,5 +20,11 @@ namespace Infrastructure.Repository
                 .Where(b => genre.Contains(b.Genre))
                 .ToListAsync(cancellationToken);
         }
+
+        public async Task<Book?> GetByTitleAsync(string title, CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Set<Book>()
+                .FirstOrDefaultAsync(b => b.Title == title, cancellationToken);
+        }
     }
 }
