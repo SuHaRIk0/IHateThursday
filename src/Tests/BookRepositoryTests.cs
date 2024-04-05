@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-
-namespace Tests
+﻿namespace Tests
 {
     public class BookRepositoryTests
     {
