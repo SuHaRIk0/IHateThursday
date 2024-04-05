@@ -1,0 +1,43 @@
+﻿@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> 
+    <link rel="stylesheet" href="~/Web.styles.css" asp-append-version="true" />
+</head>
+<style>
+    body {
+        background-color: #782223;
+    }
+</style>
+<body>
+<div class="back"></div>
+    <div class="button-login"><a class="button-login" asp-area="" asp-controller="Profile" asp-action="ShowProfile" asp-route-id="1">Увійти</a></div>
+<div class="button-info"><button class="info">Інфо</button></div>
+
+<div class="button-circle-1"></div>
+<div class="button-circle-2"></div>
+<div class="button-circle-3"></div>
+<div class="button-circle-4"></div>
+<div class="button-circle-5"></div>
+
+<div class="company">IHateThursday</div>
+<div class="name">Tassle on the Palm</div>
+
+<div class="line-1"></div>
+<div class="image-7"></div>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+        </main>
+</div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+ *@

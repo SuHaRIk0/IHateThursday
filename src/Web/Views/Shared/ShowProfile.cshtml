@@ -1,6 +1,53 @@
 ﻿@model Web.Models.ProfileViewModel
 
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+@*     <style>
+        body {
+            background-color: #782223;
+        }
+    </style> *@
+</head>
+<body>
+    <header>
+        <div class="name">Tassle on the Palm</div>
+
+        <div class="tag-search"><input class="tag" type="text" placeholder="Поле вводу"></div>
+        <div class="button-info"><button class="info"> </button></div>
+    </header>
+
+    <div class="back">
+        <h1>User Profile</h1>
+        <div>
+            <p><strong>Name:</strong> @Model.Name</p>
+            <p><strong>Tag:</strong> @Model.Tag</p>
+            <p><strong>Description:</strong> @Model.Description</p>
+            <p><strong>Genres Readed:</strong> @Model.GenresReaded</p>
+        </div>
+        <div>
+            <a class="btn btn-primary" asp-area="" asp-controller="Profile" asp-action="EditProfile" asp-route-id="1">Редагувати профіль</a>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="company">IHateThursday</div>
+        <div class="line-1"></div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+@* 
+<!DOCTYPE html>
 <html>
 <head>
     <title>User Profile</title>
@@ -8,6 +55,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Web.styles.css" asp-append-version="true" />
 </head>
+<style>
+    body {
+        background-color: #782223;
+    }
+</style>
 <body>
     <h1>User Profile</h1>
     <div>
@@ -17,4 +69,4 @@
         <p><strong>Genres Readed:</strong> @Model.GenresReaded</p>
     </div>
 </body>
-</html>
+</html> *@
