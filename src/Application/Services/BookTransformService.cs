@@ -37,7 +37,7 @@ namespace Application.Services
             return result;
         }
 
-        public async Task<BookDto?> GetBookDtosAsync(Book? book, CancellationToken cancellationToken=default)
+        public async Task<BookDto?> GetBookDtoAsync(Book? book, CancellationToken cancellationToken=default)
         {
             _logger.LogInformation("Trying to convert book type...");
 

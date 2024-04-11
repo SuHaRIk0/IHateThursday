@@ -23,7 +23,7 @@ namespace Web.Controllers
 
             return View(title);
             // var book = await _bookSearchService.GetByTitleAsync(inputField, cancellationToken);
-            // return View(await _bookTransformService.GetBookDtosAsync(book, cancellationToken));
+            // return View(await _bookTransformService.GetBookDtoAsync(book, cancellationToken));
         }
     }
 }
