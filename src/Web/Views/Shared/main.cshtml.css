@@ -48,12 +48,12 @@
         background: none;
         cursor: pointer;
         padding: 0;
-        font-family: inherit; 
-        font-size: inherit; 
-        font-weight: inherit; 
-        font-style: inherit; 
-        line-height: inherit; 
-        color: inherit; 
+        font-family: inherit; /* Використовуємо спадні властивості шрифту */
+        font-size: inherit; /* Використовуємо спадні властивості розміру шрифту */
+        font-weight: inherit; /* Використовуємо спадні властивості жирності шрифту */
+        font-style: inherit; /* Використовуємо спадні властивості стилю шрифту */
+        line-height: inherit; /* Використовуємо спадні властивості міжрядкового інтервалу */
+        color: inherit; /* Використовуємо спадні властивості кольору тексту */
     }
 
 .button-circle-1,
