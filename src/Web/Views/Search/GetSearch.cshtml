@@ -1,6 +1,23 @@
-﻿@model string
+﻿@model BookDto
 
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
-    <h3>@Model</h3>
+<body>
+    @{
+        if(Model == null)
+        {
+            <h3>Вибачте, але ми нічого не знайшли :(</h3>
+        }
+        else
+        {
+            <p>@Model.Title</p>
+            <p>@Model.AuthorName</p>
+            <p>@Model.LanguageBook</p>
+            <p>@Model.Description</p>
+            <p>@Model.Genre</p>
+            <p>@Model.Status</p>
+            <p>@Model.Id</p>
+        }
+    }
+</body>
 </html>

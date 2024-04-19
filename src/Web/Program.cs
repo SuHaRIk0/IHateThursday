@@ -5,6 +5,7 @@ using Infrastructure.Data;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Security.Policy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,10 +67,10 @@ app.UseEndpoints(endpoints =>
         pattern: "Recomendations/{action=GetRecomendations}/{id?}",
         defaults: new { controller = "Recomendations" });
 
-    //endpoints.MapControllerRoute(
-    //    name: "search",
-    //    pattern: "Search/{action=GetSearch}.{title?}",
-    //    defaults: new { controller = "Search" });
+    endpoints.MapControllerRoute(
+        name: "search",
+        pattern: "{controller=Search}/{action=GetSearch}/{title?}",
+        defaults: new { controller = "Search" });
 });
 
 app.Run();

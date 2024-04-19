@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Web.Controllers
 {
-    [Route("[controller]/{action=GetSearch}")]
+    [Route("[controller]")]
     public class SearchController : Controller
     {
         private readonly IBookSearchService _bookSearchService;
@@ -17,13 +17,16 @@ namespace Web.Controllers
         }
 
         // Matches Search/GetSearch?title=Harry+Potter+and+the+Sorcerers+Stone
-        [HttpGet("{title}")]
-        public async Task<IActionResult> GetSearch(string title, CancellationToken cancellationToken)
+        [HttpGet("GetSearch")]
+        public async Task<IActionResult> GetSearch([FromQuery] string title, CancellationToken cancellationToken)
         {
-
-            return View(title);
-            // var book = await _bookSearchService.GetByTitleAsync(inputField, cancellationToken);
-            // return View(await _bookTransformService.GetBookDtoAsync(book, cancellationToken));
+            if (string.IsNullOrEmpty(title))
+            {
+                // Обробка помилки, якщо заголовок відсутній
+                return BadRequest("Title is required.");
+            }
+            var book = await _bookSearchService.GetByTitleAsync(title, cancellationToken);
+            return View(await _bookTransformService.GetBookDtoAsync(book, cancellationToken));
         }
     }
 }
