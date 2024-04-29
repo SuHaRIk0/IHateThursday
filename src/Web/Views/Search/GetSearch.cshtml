@@ -2,6 +2,13 @@
 
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
+<head>
+    <title>Recomendations</title>
+    <form id="myForm" action="@Url.Action("GetSearch", "Search")" method="get">
+        <input type="text" id="title" name="title" placeholder="Введіть назву книги">
+        <button type="submit" class="btn btn-primary">Шукати</button>
+    </form>
+</head>
 <body>
     @{
         if(Model == null)
