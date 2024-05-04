@@ -3,45 +3,54 @@ using Microsoft.AspNetCore.Mvc;
 using Infrastructure.Data;
 using System.Linq;
 using Web.Models;
+using Application.Services;
+using Domain.IService;
 
 namespace Web.Controllers
 {
+    [Route("[controller]/{action=Profile}")]
     public class ProfileController : Controller
     {
-        private readonly TopDbContext _context;
+        private readonly IProfileService _profileService;
+        private readonly TopDbContext topDbContex;
 
-        public ProfileController(TopDbContext context)
+        public ProfileController(IProfileService profileService, TopDbContext topDbContex)
         {
-            _context = context;
+            _profileService = profileService;
+            this.topDbContex = topDbContex;
         }
 
-        public IActionResult ShowProfile(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> ShowProfile(int id)
         {
-            var user = _context.CommonUsers.FirstOrDefault(u => u.Id == id);
+            var dummi = await _profileService.ShowByIdAsync(id);
+            ProfileViewModel profile = new ProfileViewModel(dummi);
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+            List<Book> books = topDbContex.Books.ToList();
 
-            var model = new ProfileViewModel
+            UserProfileViewModel viewModel = new UserProfileViewModel
             {
-                Name = user.Name,
-                Tag = user.Tag,
-                Description = user.Description,
-                GenresReaded = user.GenresReaded
+                Profile = profile,
+                Books = books
             };
 
-            //var model = new ProfileViewModel
-            //{
-            //    Id = 1,
-            //    Name = "Iryna",
-            //    Tag = "IZ",
-            //    Description = "I love a book",
-            //    GenresReaded = "Fiction, Mystery"
-            //};
+            return View(viewModel);
+        }
 
-            return View(model); 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> EditProfile(int id)
+        {
+            var dummi = await _profileService.ShowByIdAsync(id);
+            return View(new ProfileViewModel(dummi));
+        }
+
+        [HttpPost("{id}")]
+        public async Task<IActionResult> EditProfile(int id, CommonUser updatedUser)
+        {
+            var dummi = await _profileService.EditByIdAsync(id, updatedUser);
+            var dummi2 = await _profileService.ShowByIdAsync(id);
+
+            return View(new ProfileViewModel(dummi2));
         }
     }
 }
