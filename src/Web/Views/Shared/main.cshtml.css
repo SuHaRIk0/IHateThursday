@@ -13,9 +13,9 @@
     position: absolute;
     font-family: 'Kyiv*Type Titling';
     font-style: normal;
-    font-weight: 200;
-    font-size: 2vw;
-    line-height: 3vw;
+    font-weight: 350;
+    font-size: 3vw;
+    line-height: 4vw;
     color: #FEF9C6;
     cursor: pointer;
     border: none;
@@ -23,38 +23,38 @@
     text-align: center;
     box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
     border-radius: 3vw;
-    width: 10vw;
-    height: 3vw;
+    width: 15vw;
+    height: 5vw;
 }
 
 .button-info {
-    left: 89vw;
-    top: 3vh;
+    left: 83vw;
+    top: 5vh;
 }
 
 .button-login {
-    left: 76vw;
-    top: 3vh;
+    left: 65vw;
+    top: 5vh;
 }
 
-.button-login:hover,
-.button-info:hover {
-    background-color: #610809;
-}
+    .button-login:hover,
+    .button-info:hover {
+        background-color: #610809;
+    }
 
-.button-login button,
-.button-info button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    font-family: inherit; 
-    font-size: inherit; 
-    font-weight: inherit; 
-    font-style: inherit; 
-    line-height: inherit; 
-    color: inherit; 
-}
+    .button-login button,
+    .button-info button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        font-family: inherit; /* Використовуємо спадні властивості шрифту */
+        font-size: inherit; /* Використовуємо спадні властивості розміру шрифту */
+        font-weight: inherit; /* Використовуємо спадні властивості жирності шрифту */
+        font-style: inherit; /* Використовуємо спадні властивості стилю шрифту */
+        line-height: inherit; /* Використовуємо спадні властивості міжрядкового інтервалу */
+        color: inherit; /* Використовуємо спадні властивості кольору тексту */
+    }
 
 .button-circle-1,
 .button-circle-2,
@@ -99,7 +99,6 @@
     width: 30vw;
     right: 0vw;
     top: 80vh;
-    color:azure;
     border: 0.25vw solid #CFAE7D;
     transform: rotate(-0.36deg);
 }
@@ -119,13 +118,13 @@
 
 .name {
     position: absolute;
-    width: 70vw;
+    width: 90vw;
     font-family: 'Lobster';
     font-style: normal;
     font-size: 3.5vw;
     line-height: 5vh;
     color: #610809;
-    top: 3vh;
+    top: 5vh;
 }
 
 .image-7 {

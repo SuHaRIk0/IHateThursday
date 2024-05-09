@@ -1,11 +1,12 @@
 using Application.Services;
+using Domain.Entities;
 using Domain.IRepository;
 using Domain.IService;
 using Infrastructure.Data;
 using Infrastructure.Repository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System.Security.Policy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,8 +29,17 @@ builder.Host.UseSerilog((context, config) =>
         .WriteTo.Seq("http://localhost:5341");
 });
 
-// Adding services and repositories. Better to move to another file in the future
+builder.Services.AddIdentity<CommonUser, IdentityRole<int>>(options =>
+{
+
+})
+.AddEntityFrameworkStores<TopDbContext>()
+.AddDefaultTokenProviders();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IRecomendationService, RecomendationService>();
 builder.Services.AddScoped<IBookTransformService, BookTransformService>();
@@ -61,6 +71,21 @@ app.UseEndpoints(endpoints =>
         name: "profile",
         pattern: "Profile/{action=ShowProfile}/{id?}",
         defaults: new { controller = "Profile" });
+
+    endpoints.MapControllerRoute(
+        name: "recomendations",
+        pattern: "Recomendations/{action=GetRecomendations}/{id?}",
+        defaults: new { controller = "Recomendations" });
+
+    endpoints.MapControllerRoute(
+        name: "login",
+        pattern: "Login/{action=Login}/{id?}",
+        defaults: new { controller = "Login", action = "Login" });
+
+    endpoints.MapControllerRoute(
+        name: "register",
+        pattern: "Register/{action=Register}/{id?}",
+        defaults: new { controller = "Register", action = "Register" });
 
     endpoints.MapControllerRoute(
         name: "recomendations",

@@ -2,7 +2,7 @@ name: SonarCloud
 on:
   push:
     branches:
-      - third_block
+      - master
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -43,7 +43,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"SuHaRIk0_TassleOnthePalm" /o:"ihatethursday" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.xunit.reportsPaths=".\src\Tests\XUnitResults.xml"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"SuHaRIk0_TassleOnthePalm" /o:"ihatethursday" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build .\src\Web\Web.csproj
-          dotnet test --logger:"xunit;LogFilePath=XUnitResults.xml" .\src\Tests\Tests.csproj
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

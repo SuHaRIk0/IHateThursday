@@ -1,254 +1,106 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿.back {
+    position: absolute;
+    width: 90vw;
+    height: 70vh;
+    background: #CFAE7D;
+    border-radius: 10vw;
+    overflow: hidden;
+    left: 5vw;
+    right: 5vw;
+    top: 15vh;
 }
 
-a {
-  color: #0077cc;
+.name {
+    position: absolute;
+    width: 90vw;
+    font-family: 'Lobster';
+    font-style: normal;
+    font-size: 3.5vw;
+    line-height: 5vh;
+    color: #782223;
+    top: 14vh;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.tag {
+    position: absolute;
+    width: 90vw;
+    font-family: 'Lobster';
+    font-style: normal;
+    font-size: 2vw;
+    line-height: 2vh;
+    color: #782223;
+    top: 27vh;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.description {
+    position: absolute;
+    width: 90vw;
+    font-family: 'Lobster';
+    font-style: normal;
+    font-size: 2vw;
+    line-height: 2vh;
+    color: #782223;
+    top: 32vh;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.genres {
+    position: absolute;
+    width: 90vw;
+    font-family: 'Lobster';
+    font-style: normal;
+    font-size: 2vw;
+    line-height: 2vh;
+    color: #782223;
+    top: 37vh;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+.edit-profile {
+    position: absolute;
+    font-family: 'Kyiv*Type Titling';
+    font-style: normal;
+    font-weight: 80;
+    font-size: 1.5vw;
+    line-height: 2.5vw;
+    color: #CFAE7D;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
+    border-radius: 3vw;
+    width: 10vw;
+    height: 5.5vw;
+}
+
+.edit-profile {
+    left: 83vw;
+    top: 20vh;
+}
+
+.edit-profile:hover {
+    background-color: #CFAE7D;
 }
 
 
-/* Frame 41 */
 
-/*position: relative;
-width: 1000px;
-height: 700px;
+/*.tag-search {
+    left: 65vw;
+    top: 3vh;
+}
 
-background: #782223;*/
-/* Tassle on the Palm */
-/*position: absolute;
-width: 400px;
-height: 50px;
-left: 21px;
-top: 1px;
+.tag-search text,*/
+.edit-profile button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    line-height: inherit;
+    color: inherit;
+}
 
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 48px;
-line-height: 60px;
 
-color: rgba(254, 249, 198, 0.5);*/
-/* Line 1 */
-/*position: absolute;
-width: 319.01px;
-height: 0px;
-left: 671px;
-top: 691px;
-
-border: 4px solid #FEF9C6;
-transform: rotate(-0.36deg);*/
-/* IHateThursday */
-/*position: absolute;
-width: 260px;
-height: 98px;
-left: 724px;
-top: 614px;
-
-font-family: 'Metal';
-font-style: normal;
-font-weight: 400;
-font-size: 48px;
-line-height: 98px;
-
-color: rgba(254, 249, 198, 0.7);*/
-/* Rectangle 13 */
-/*position: absolute;
-width: 933px;
-height: 555px;
-left: 33px;
-top: 72px;
-
-background: #CFAE7D;
-border-radius: 30px;*/
-/* Rectangle 14 */
-/*position: absolute;
-width: 213px;
-height: 38px;
-left: 65px;
-top: 194px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
-/* Rectangle 39 */
-/*position: absolute;
-width: 177px;
-height: 71px;
-left: 563px;
-top: 531px;
-
-background: rgba(254, 249, 198, 0.7);
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 30px;*/
-/* Rectangle 40 */
-/*position: absolute;
-width: 177px;
-height: 71px;
-left: 762px;
-top: 531px;
-
-background: #610809;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 30px;*/
-/* Rectangle 38 */
-/*position: absolute;
-width: 462px;
-height: 309px;
-left: 65px;
-top: 293px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
-/* Rectangle 32 */
-/*position: absolute;
-width: 213px;
-height: 38px;
-left: 314px;
-top: 194px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
-/* Редагувати профіль */
-/*position: absolute;
-width: 417px;
-height: 60px;
-left: 65px;
-top: 83px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 48px;
-line-height: 60px;*/
-/* identical to box height */
-/*color: #610809;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
-/* Псевдонім */
-/*position: absolute;
-width: 141px;
-height: 40px;
-left: 71px;
-top: 154px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #610809;*/
-/* Опис */
-/*position: absolute;
-width: 65px;
-height: 40px;
-left: 71px;
-top: 243px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #610809;*/
-/* Tag */
-/*position: absolute;
-width: 48px;
-height: 40px;
-left: 321px;
-top: 154px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #610809;*/
-/* Скасувати */
-/*position: absolute;
-width: 147px;
-height: 40px;
-left: 578px;
-top: 547px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #610809;*/
-/* Додати */
-/*position: absolute;
-width: 108px;
-height: 40px;
-left: 800px;
-top: 547px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #CFAE7D;*/
-/* Rectangle 30 */
-/*position: absolute;
-width: 50px;
-height: 50px;
-left: 940px;
-top: 10px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
-/* Rectangle 31 */
-/*position: absolute;
-width: 300px;
-height: 42px;
-left: 627px;
-top: 14px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
+}
