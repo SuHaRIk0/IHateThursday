@@ -1,4 +1,7 @@
-﻿@model Web.Models.BookViewModel
+﻿@model BookViewModel
+ @using Microsoft.AspNetCore.Identity
+ @using System.Security.Claims
+
 
 <head>
     <style>
@@ -61,7 +64,14 @@
             margin-top: 20px; 
         }
 
-        button[type="submit"] {
+        .input-container {
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+        }
+
+        input[type="submit"],
+        .button-cancel {
             background-color: #420506;
             color: #CFAE7D;
             padding: 10px 20px;
@@ -69,17 +79,33 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            width: 40%; 
+            width: 20vw;
+            height: 5vw;
+            align-self: flex-end;
+            text-align: center;
             font-family: 'Kyiv*Type Titling';
             font-style: normal;
-            font-weight: 200;
+            font-weight: 250;
             font-size: 2vw;
             line-height: 3vw;
             box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
+            margin-right: 50px;
         }
 
-            button[type="submit"]:hover {
+            input[type="submit"]:hover,
+        .button-cancel:hover {
                 background-color: #610809;
+            }
+
+            .button-cancel a {
+                color: #CFAE7D;
+                text-decoration: none;
+                display: inline-block;
+                width: 10vw;
+                height: 3vw;
+                text-align: center;
+                line-height: 3vw;
+                font-size: 2vw;
             }
 
         h2 {
@@ -131,6 +157,9 @@
         </div>
     </div>
 
-    <button type="submit">Create</button>
+    <div class="input-container">
+        <input type="submit" value="Save" />
+        <a class="button-cancel" asp-area="" asp-controller="Profile" asp-action="ShowProfile" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Скасувати</a>
+    </div>
     
 </form>
