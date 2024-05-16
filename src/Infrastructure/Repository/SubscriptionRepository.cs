@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.IRepository;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,17 +19,19 @@ namespace Infrastructure.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<Subscription?> GetSubsByGenreAsync(string tag., CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Subscription>> GetSubscriptionsByIdAsync(int user_id, CancellationToken cancellationToken)
         {
             return await _dbContext.Set<Subscription>()
-                .Where(b => genre.Contains(b.Genre))
-                .ToListAsync(cancellationToken);
+                                   .Where(subscription => subscription.UserToId == user_id)
+                                   .ToListAsync(cancellationToken);
         }
 
-        public async Task<Book?> GetFollowersByTitleAsync(string title, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Subscription>> GetFollowersByIdAsync(int user_id, CancellationToken cancellationToken = default)
         {
-            return await _dbContext.Set<Book>()
-                .FirstOrDefaultAsync(b => b.Title == title, cancellationToken);
+            return await _dbContext.Set<Subscription>()
+                                    .Where(follower => follower.FollowerId == user_id)
+                                    .ToListAsync(cancellationToken);
         }
+
     }
 }

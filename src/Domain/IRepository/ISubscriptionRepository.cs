@@ -9,8 +9,8 @@ namespace Domain.IRepository
 {
     public interface ISubscriptionRepository : IRepository<Subscription>
     {
-        Task<IEnumerable<Subscription>?> GetSubsByGenreAsync(string title, CancellationToken cancellationToken = default);
-        Task<IEnumerable<Subscription>?> GetFollowersByTitleAsync(string title, CancellationToken cancellationToken = default);
+        Task<IEnumerable<Subscription>?> GetFollowersByIdAsync(int user_id, CancellationToken cancellationToken = default);
 
+        Task<IEnumerable<Subscription>?> GetSubscriptionsByIdAsync(int user_id, CancellationToken cancellationToken = default);
     }
 }
