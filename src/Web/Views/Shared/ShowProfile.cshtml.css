@@ -1,106 +1,61 @@
-﻿.back {
+﻿.profile-container {
     position: absolute;
-    width: 90vw;
-    height: 70vh;
-    background: #CFAE7D;
-    border-radius: 10vw;
-    overflow: hidden;
-    left: 5vw;
-    right: 5vw;
-    top: 15vh;
-}
-
-.name {
-    position: absolute;
-    width: 90vw;
-    font-family: 'Lobster';
-    font-style: normal;
-    font-size: 3.5vw;
-    line-height: 5vh;
-    color: #782223;
-    top: 14vh;
-}
-
-.tag {
-    position: absolute;
-    width: 90vw;
-    font-family: 'Lobster';
-    font-style: normal;
-    font-size: 2vw;
-    line-height: 2vh;
-    color: #782223;
-    top: 27vh;
-}
-
-.description {
-    position: absolute;
-    width: 90vw;
-    font-family: 'Lobster';
-    font-style: normal;
-    font-size: 2vw;
-    line-height: 2vh;
-    color: #782223;
-    top: 32vh;
-}
-
-.genres {
-    position: absolute;
-    width: 90vw;
-    font-family: 'Lobster';
-    font-style: normal;
-    font-size: 2vw;
-    line-height: 2vh;
-    color: #782223;
-    top: 37vh;
-}
-
-.edit-profile {
-    position: absolute;
-    font-family: 'Kyiv*Type Titling';
-    font-style: normal;
-    font-weight: 80;
-    font-size: 1.5vw;
-    line-height: 2.5vw;
-    color: #CFAE7D;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
-    border-radius: 3vw;
-    width: 10vw;
-    height: 5.5vw;
-}
-
-.edit-profile {
-    left: 83vw;
-    top: 20vh;
-}
-
-.edit-profile:hover {
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
     background-color: #CFAE7D;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-
-
-/*.tag-search {
-    left: 65vw;
-    top: 3vh;
+.profile-info {
+    margin-bottom: 20px; 
 }
 
-.tag-search text,*/
-.edit-profile button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    font-style: inherit;
-    line-height: inherit;
-    color: inherit;
+.profile-info p {
+    margin: 0;
+    width: 50%; 
 }
 
+.profile-info p:nth-child(3),
+.profile-info p:nth-child(4) {
+    width: 100%; 
+}
 
+.bookcase {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px; 
+}
+
+.bookshelf {
+    width: 30%; 
+    background-color: #FEF9C6; 
+    border-radius: 10px;
+    padding: 10px; 
+}
+
+.book {
+    margin-bottom: 10px; 
+    padding: 10px; 
+    background-color: #FFF; 
+    border-radius: 5px; 
+}
+
+.button-login {
+    text-align: center; 
+    margin-top: 20px; 
+}
+
+.button-login a {
+    background-color: #FEF9C6;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    color: #782223; 
 }

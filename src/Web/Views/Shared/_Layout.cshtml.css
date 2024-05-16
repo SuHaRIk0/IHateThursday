@@ -7,9 +7,15 @@
     overflow: hidden;
     margin-left: -25vw;
 }
+.form-logout {
+    background-color: transparent;
+}
 
 .button-login,
-.button-info {
+.button-info,
+.button-recomendations,
+.button-profile,
+.button-logout {
     position: absolute;
     font-family: 'Kyiv*Type Titling';
     font-style: normal;
@@ -28,33 +34,54 @@
 }
 
 .button-info {
-    left: 89vw;
+    left: 88vw;
     top: 3vh;
 }
 
 .button-login {
-    left: 76vw;
+    left: 75vw;
     top: 3vh;
 }
 
-.button-login:hover,
-.button-info:hover {
-    background-color: #610809;
+.button-recomendations {
+    left: 63vw;
+    top: 3vh;
 }
 
-.button-login button,
-.button-info button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    font-family: inherit; 
-    font-size: inherit; 
-    font-weight: inherit; 
-    font-style: inherit; 
-    line-height: inherit; 
-    color: inherit; 
+.button-profile {
+    left: 50vw;
+    top: 3vh;
 }
+
+.button-logout {
+    left: 75vw;
+    top: 3vh;
+}
+
+    .button-login:hover,
+    .button-info:hover,
+    .button-recomendations:hover,
+    .button-profile:hover,
+    .button-logout:hover {
+        background-color: #610809;
+    }
+
+    .button-login button,
+    .button-info button,
+    .button-recomendations button,
+    .button-profile button,
+    .button-logout button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
 
 .button-circle-1,
 .button-circle-2,
@@ -124,7 +151,7 @@
     font-style: normal;
     font-size: 3.5vw;
     line-height: 5vh;
-    color: #610809;
+    color: #CFAE7D;
     top: 3vh;
 }
 
@@ -136,4 +163,3 @@
     background: url(image.png) no-repeat;
     background-size: cover;
 }
-

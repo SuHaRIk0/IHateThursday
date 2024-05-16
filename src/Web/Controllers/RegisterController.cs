@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.IService;
 using Web.Models;
+using System;
 
 namespace Web.Controllers
 {
@@ -31,7 +32,7 @@ namespace Web.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Login", "Login");
                 }
 
                 foreach (var error in result.Errors)

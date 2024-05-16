@@ -44,6 +44,7 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IRecomendationService, RecomendationService>();
 builder.Services.AddScoped<IBookTransformService, BookTransformService>();
 builder.Services.AddScoped<IBookSearchService, BookSearchService>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 
 var app = builder.Build();

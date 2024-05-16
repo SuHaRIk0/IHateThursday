@@ -1,4 +1,7 @@
-﻿
+﻿ @using Microsoft.AspNetCore.Identity
+ @using System.Security.Claims
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,15 +16,48 @@
 <style>
     body {
         background-color: #782223;
-        /* background-image: url('./Images/fon_1.jpg');
-        background-size: cover;
-        background-repeat: no-repeat; */
+        /* background-color: #CFAE7D; */
     }
 </style>
 <body>
     <header>
-        <div class="button-login"><a class="button-login" asp-area="" asp-controller="Login">Увійти</a></div>
-        <div class="button-info"><button class="info">Інфо</button></div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="form-logout">
+                    <form asp-area="" asp-controller="Login" asp-action="Logout">
+                    <button class="button-logout" type="submit">Вийти</button>
+                    </form>
+            </div>
+            <div class="button-recomendations">
+                <a class="button-recomendations" asp-area="" asp-controller="Recomendations" asp-action="GetRecomendations" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Рекомендації</a>
+            </div>
+            <div class="button-profile">
+                <a class="button-profile" asp-area="" asp-controller="Profile" asp-action="ShowProfile" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Профіль</a>
+            </div>
+        }
+        else
+        {
+            <div class="button-login"><a class="button-login" asp-area="" asp-controller="Login" asp-action="Login">Увійти</a></div>
+        }
+
+        @if (!User.Identity.IsAuthenticated && Context.Request.Query["id"].Count == 0)
+        {
+            <div class="button-login">
+                <a class="button-login" asp-area="" asp-controller="Login" asp-action="Login">Увійти</a>
+            </div>
+        }
+        else if (!User.Identity.IsAuthenticated && Context.Request.Query["id"].Count > 0)
+        {
+            <div class="button-login">
+                <form asp-area="" asp-controller="Login" asp-action="Login">
+                    <input type="text" name="username" placeholder="Enter your username" />
+                    <input type="password" name="password" placeholder="Enter your password" />
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        }
+
+        <div class="button-info"><button class="info">Інформація</button></div>
 
         <div class="name">Tassle on the Palm</div>
     </header>

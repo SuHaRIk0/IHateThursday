@@ -21,36 +21,6 @@ namespace Web.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Login(AuthViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var result = await _authService.LoginAsync(model.Email, model.RememberMe, model.Password);
-
-        //        if (result.Succeeded)
-        //        {
-        //            var userId = await _authService.GetUserIdAsync(model.Email);
-
-        //            userId = 1;
-
-        //            if (userId != null)
-        //            {
-        //                //return RedirectToAction("ShowProfile", "Profile", userId);
-        //                return RedirectToAction("ShowProfile", "Profile", new { id = userId } );
-        //            }
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-        //        }
-        //    }
-
-        //    Console.WriteLine(ModelState);
-
-        //    return View("Login", model);
-        //}
-
         [HttpPost]
         public async Task<IActionResult> Login(LogViewModel model)
         {
@@ -81,7 +51,14 @@ namespace Web.Controllers
             return View("Login", model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
 
+            await _authService.LogoutAsync();
+
+            return RedirectToAction("Index", "Home"); 
+        }
         public IActionResult AccessDenied()
         {
             return View();

@@ -1,4 +1,9 @@
-﻿namespace Web.Models
+﻿using Domain.Entities;
+using Humanizer.Localisation;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System.Xml.Linq;
+
+namespace Web.Models
 {
     public class BookViewModel
     {
@@ -17,5 +22,21 @@
         public string Description { get; set; }
 
         public string Status { get; set; }
+
+        public BookViewModel()
+        {
+        }
+
+        public BookViewModel(Book dummy)
+        {
+            Id = dummy.Id;
+            Title = dummy.Title;
+            AuthorName = dummy.AuthorName;
+            Picture = dummy.Picture;
+            Language = dummy.LanguageBook;
+            Genre = dummy.Genre;
+            Description = dummy.Description;
+            Status = dummy.Status;
+        }
     }
 }

@@ -67,11 +67,13 @@ namespace Web.Controllers
     public class ProfileController : Controller
     {
         private readonly IProfileService _profileService;
+        private readonly IBookService _bookService;
         private readonly TopDbContext topDbContex;
 
-        public ProfileController(IProfileService profileService, TopDbContext topDbContex)
+        public ProfileController(IProfileService profileService, IBookService bookService, TopDbContext topDbContex)
         {
             _profileService = profileService;
+            _bookService = bookService;
             this.topDbContex = topDbContex;
         }
 
@@ -81,7 +83,8 @@ namespace Web.Controllers
             var dummi = await _profileService.ShowByIdAsync(id);
             ProfileViewModel profile = new ProfileViewModel(dummi);
 
-            List<Book> books = topDbContex.Books.ToList();
+            var dummy = await _bookService.ShowBookByIdAsync(id);
+            List<BookViewModel> books = new List<BookViewModel>();
 
             UserProfileViewModel viewModel = new UserProfileViewModel
             {
