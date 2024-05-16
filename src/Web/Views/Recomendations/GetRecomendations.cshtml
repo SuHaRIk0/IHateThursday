@@ -1,0 +1,51 @@
+﻿﻿@model BookDto[]
+
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <title>Recomendations</title>
+    @* <form id="myForm" action="@Url.Action("GetSearch", "SearchController")" method="get">
+        <input type="text" id="title" name="title" placeholder="Введіть назву книги">
+        <button type="submit" class="btn btn-primary">Шукати</button>
+    </form> *@
+</head>
+<body>
+    @{
+        if(Model == null)
+        {
+            <p>Користувача з таким ID не існує!</p>
+        }
+        else if(Model.GetLength(0) == 0)
+        {
+            <p>Вибачте, але ми не знайшли книжок, які були б вам до вподоби :(</p>
+        }
+        else
+        {
+            <p id="recomendationtbl">Ось, що ми для вас знайшли :)</p>
+            <table aria-describedby="recomendationtbl">
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                        <th>Автор</th>
+                        <th>Опис</th>
+                        <th>Стан</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        for (int i = 0; i < Model.GetLength(0); i++)
+                        {
+                            <tr>
+                                <td>@Model[i].Title</td>
+                                <td>@Model[i].AuthorName</td>
+                                <td>@Model[i].Description</td>
+                                <td>@Model[i].Status</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    }
+</body>
+</html>

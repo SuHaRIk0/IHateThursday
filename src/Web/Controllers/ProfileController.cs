@@ -6,11 +6,11 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    public class SubscriptionController : Controller
+    public class ProfileController : Controller
     {
         private readonly TopDbContext _context;
 
-        public SubscriptionController(TopDbContext context)
+        public ProfileController(TopDbContext context)
         {
             _context = context;
         }
