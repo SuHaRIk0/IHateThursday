@@ -9,6 +9,8 @@ namespace Domain.IService
         Task<bool> EditBookByIdAsync(int id, Book updatedBook);
 
         Task<Book?> ShowBookByIdAsync(int id);
+
+        Task<IEnumerable<Book>?> GetBooksByIdAsync(int id);
     }
 }
 

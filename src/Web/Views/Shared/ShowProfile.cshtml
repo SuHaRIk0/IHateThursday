@@ -54,8 +54,7 @@
         <div class="bookcase">
             <div class="bookshelf">
                 <h2>Planning</h2>
-                @if (Model.Books != null)
-                           @*  && Model.Books.Any() *@
+                @if (Model.Books != null && Model.Books.Any())
                 {
                     @foreach (var book in Model.Books)
                     {
@@ -66,10 +65,6 @@
                                 <h3>@book.Title</h3>
                                 <h5>@book.AuthorName</h5>
                             </div>
-                        }
-                        else
-                        {
-                            <p>no :/</p>
                         }
                     }
                 }
@@ -85,17 +80,13 @@
                 {
                     @foreach (var book in Model.Books)
                     {
-                        @if (book.Status == "in_progress")
+                        @if (book.Status == "inProgress")
                         {
                             <div class="book">
                                 <img src=@book.Picture />
                                 <h3>@book.Title</h3>
                                 <h5>@book.AuthorName</h5>
                             </div>
-                        }
-                        else
-                        {
-                            <p>no :/</p>
                         }
                     }
                 }
@@ -118,10 +109,6 @@
                                 <h3>@book.Title</h3>
                                 <h5>@book.AuthorName</h5>
                             </div>
-                        }
-                        else
-                        {
-                            <p>no :/</p>
                         }
                     }
                 }

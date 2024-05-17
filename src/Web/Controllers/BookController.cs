@@ -1,6 +1,10 @@
-﻿using Infrastructure.Data;
+﻿using Domain.Entities;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+
 
 namespace Web.Controllers
 {
@@ -37,8 +41,38 @@ namespace Web.Controllers
             topDbContex.Books.Add(book);
             topDbContex.SaveChanges();
 
+            var state = new Domain.Entities.BookState
+            {
+                StateBook = bookView.Status,
+                LikeBook = true,
+                BookId = book.Id,
+                UserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
+            };
+
+            topDbContex.BookStates.Add(state);
+            topDbContex.SaveChanges();
+
             return View("Add");
         }
+
+        //[HttpPost]
+        //[ActionName("Add")]
+        //public IActionResult AddState(BookViewModel bookView)
+        //{
+        //    var state = new Domain.Entities.BookState
+        //    {
+        //        StateBook = bookView.Status,
+        //        LikeBook = true,
+        //        BookId = bookView.Id,
+        //        UserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
+        //    };
+
+        //    topDbContex.BookStates.Add(state);
+        //    topDbContex.SaveChanges();
+
+        //    return View("Add");
+        //}
+
 
         [HttpGet]
         public IActionResult Show() 

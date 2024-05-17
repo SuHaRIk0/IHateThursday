@@ -1,65 +1,11 @@
-﻿//using Domain.Entities;
-//using Microsoft.AspNetCore.Mvc;
-//using Infrastructure.Data;
-//using System.Linq;
-//using Web.Models;
-//using Application.Services;
-//using Domain.IService;
-
-//namespace Web.Controllers
-//{
-//    [Route("[controller]/{action=Profile}")]
-//    public class ProfileController : Controller
-//    {
-//        private readonly IProfileService _profileService;
-
-//        public ProfileController(IProfileService profileService)
-//        {
-//            _profileService = profileService;
-//        }
-
-//        [HttpGet("ShowProfile/{id}")]
-//        public async Task<IActionResult> ShowProfile(int id)
-//        {
-//            var dummi = await _profileService.ShowByIdAsync(id);
-//            return View(new ProfileViewModel(dummi));
-//        }
-
-//        [HttpGet("{id}")]
-//        public async Task<IActionResult> EditProfile(int id)
-//        {
-//            var dummi = await _profileService.ShowByIdAsync(id);
-//            return View(new ProfileViewModel(dummi));
-//        }
-
-
-//        //[HttpGet("{id}")]
-//        //public async Task<IActionResult> EditProfile(int userId)
-//        //{
-//        //    var dummi = await _profileService.ShowByIdAsync(userId);
-//        //    //return View(new ProfileViewModel(dummi));
-//        //    return RedirectToAction("ShowProfile", "Profile", new { id = userId.ToString() });
-//        //}
-
-//        [HttpPost("{id}")]
-//        public async Task<IActionResult> EditProfile(int id, CommonUser updatedUser)
-//        {
-//            var dummi = await _profileService.EditByIdAsync(id, updatedUser);
-//            var dummi2 = await _profileService.ShowByIdAsync(id);
-
-//            //return View(new ProfileViewModel(dummi2));
-//            return RedirectToAction("ShowProfile", "Profile", new { id = id.ToString() });
-//        }
-//    }
-//}
-
-using Domain.Entities;
+﻿using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Infrastructure.Data;
 using System.Linq;
 using Web.Models;
 using Application.Services;
 using Domain.IService;
+
 
 namespace Web.Controllers
 {
@@ -77,23 +23,39 @@ namespace Web.Controllers
             this.topDbContex = topDbContex;
         }
 
-        [HttpGet("{id}")]
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> ShowProfile(int id)
+        //{
+        //    var dummi = await _profileService.ShowByIdAsync(id);
+        //    ProfileViewModel profile = new ProfileViewModel(dummi);
+
+        //    var dummy = await _bookService.ShowBookByIdAsync(id);
+        //    List<BookViewModel> books = new List<BookViewModel>();
+
+        //    UserProfileViewModel viewModel = new UserProfileViewModel
+        //    {
+        //        Profile = profile,
+        //        Books = books
+        //    };
+
+        //    return View(viewModel);
+        //}
+
         public async Task<IActionResult> ShowProfile(int id)
         {
-            var dummi = await _profileService.ShowByIdAsync(id);
-            ProfileViewModel profile = new ProfileViewModel(dummi);
+            var profile = await _profileService.ShowByIdAsync(id);
+            var books = await _bookService.GetBooksByIdAsync(id);
 
-            var dummy = await _bookService.ShowBookByIdAsync(id);
-            List<BookViewModel> books = new List<BookViewModel>();
-
-            UserProfileViewModel viewModel = new UserProfileViewModel
+            var viewModel = new UserProfileViewModel
             {
-                Profile = profile,
-                Books = books
+                Profile = new ProfileViewModel(profile),
+                Books = books.Select(book => new BookViewModel(book)).ToList()
             };
 
             return View(viewModel);
         }
+
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> EditProfile(int id)

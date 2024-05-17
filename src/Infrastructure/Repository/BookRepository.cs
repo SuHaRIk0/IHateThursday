@@ -46,5 +46,30 @@ namespace Infrastructure.Repository
         {
             throw new NotImplementedException();
         }
+
+        //public async Task<List<Book>> GetBooksByIdAsync(int Id)
+        //{
+        //    var books = await _dbContext.Books
+        //        .Where(book => book.Id == Id)
+        //        .ToListAsync();
+
+        //    return books;
+        //}
+
+        public async Task<IEnumerable<Book>?> GetBooksByIdAsync(int Id, CancellationToken cancellationToken = default)
+        {
+            var boo = await _dbContext.Set<BookState>()
+                .Where(book => book.UserId == Id)
+                .ToListAsync(cancellationToken);
+            var books = new List<Book>();
+            foreach(var dummy in boo)
+            {
+                books.Add(await _dbContext.Set<Book>()
+                    .Where(book => book.Id == dummy.BookId)
+                    .FirstOrDefaultAsync(cancellationToken));
+            }
+            return books;
+        }
+
     }
 }
