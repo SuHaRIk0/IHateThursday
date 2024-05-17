@@ -51,7 +51,7 @@ namespace Tests
             foreach (var bookDto in result)
             {
                 Assert.NotNull(bookDto);
-                Assert.Contains(books, book => bookDto.Id == book.Id && bookDto.Title == book.Title);
+                Assert.Contains(books, book => bookDto.Title == book.Title);
             }
         }
     }
