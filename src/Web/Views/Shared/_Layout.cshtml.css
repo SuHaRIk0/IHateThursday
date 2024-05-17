@@ -1,48 +1,166 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿﻿.back {
+    position: absolute;
+    width: 90vw;
+    height: 100vh;
+    background: #CFAE7D;
+    border-radius: 30vw;
+    overflow: hidden;
+    margin-left: -25vw;
 }
 
-a {
-  color: #0077cc;
+.form-logout {
+    background-color: transparent;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.button-login,
+.button-info,
+.button-recomendations,
+.button-profile,
+.button-logout {
+    position: absolute;
+    font-family: 'Kyiv*Type Titling';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 2vw;
+    line-height: 3vw;
+    color: #FEF9C6;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
+    border-radius: 3vw;
+    width: 10vw;
+    height: 3vw;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.button-info {
+    left: 88vw;
+    top: 3vh;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.button-login {
+    left: 75vw;
+    top: 3vh;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.button-recomendations {
+    left: 63vw;
+    top: 3vh;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.button-profile {
+    left: 50vw;
+    top: 3vh;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+.button-logout {
+    left: 75vw;
+    top: 3vh;
+}
+
+    .button-login:hover,
+    .button-info:hover,
+    .button-recomendations:hover,
+    .button-profile:hover,
+    .button-logout:hover {
+        background-color: #610809;
+    }
+
+    .button-login button,
+    .button-info button,
+    .button-recomendations button,
+    .button-profile button,
+    .button-logout button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+
+.button-circle-1,
+.button-circle-2,
+.button-circle-3,
+.button-circle-4,
+.button-circle-5 {
+    position: absolute;
+    width: 5vw;
+    height: 5vw;
+    background: #CFAE7D;
+    box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
+    border-radius: 2.5vw;
+}
+
+.button-circle-1 {
+    left: 65vw;
+    top: 85vh;
+}
+
+.button-circle-2 {
+    left: 72vw;
+    top: 85vh;
+}
+
+.button-circle-3 {
+    left: 79vw;
+    top: 85vh;
+}
+
+.button-circle-4 {
+    left: 86vw;
+    top: 85vh;
+}
+
+.button-circle-5 {
+    left: 93vw;
+    top: 85vh;
+}
+
+.line-1 {
+    position: absolute;
+    width: 30vw;
+    right: 0vw;
+    top: 80vh;
+    color: azure;
+    border: 0.25vw solid #CFAE7D;
+    transform: rotate(-0.36deg);
+}
+
+.company {
+    position: absolute;
+    width: 15vw;
+    height: 10vh;
+    right: 5vw;
+    top: 70vh;
+    font-family: 'Metal';
+    font-style: normal;
+    font-size: 3vw;
+    line-height: 10vh;
+    color: #FEF9C6;
+}
+
+.name {
+    position: absolute;
+    width: 70vw;
+    font-family: 'Lobster';
+    font-style: normal;
+    font-size: 3.5vw;
+    line-height: 5vh;
+    color: #CFAE7D;
+    top: 3vh;
+}
+
+.image-7 {
+    position: absolute;
+    width: 30vw;
+    height: 50vh;
+    top: 10vh;
+    background: url(image.png) no-repeat;
+    background-size: cover;
 }

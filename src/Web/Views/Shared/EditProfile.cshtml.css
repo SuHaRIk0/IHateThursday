@@ -1,0 +1,70 @@
+﻿﻿ /*body {
+    background-color: #782223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    width: 70%;
+    padding: 40px;
+    background-color: #CFAE7D;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: 'Lobster';
+    font-size: 2vw;
+    color: #782223;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #FEF9C6;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"], .button-cancel {
+    background-color: #420506;
+    color: #CFAE7D;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 10vw;
+    height: 3vw;
+    align-self: flex-end;
+    text-align: center;
+    font-family: 'Kyiv*Type Titling';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 2vw;
+    line-height: 3vw;
+    box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
+}
+
+    .button-cancel:hover {
+        background-color: #610809;
+    }
+
+    .button-cancel a {
+        color: #CFAE7D;
+        text-decoration: none;
+        display: inline-block;
+        width: 10vw;
+        height: 3vw;
+        text-align: center;
+        line-height: 3vw;
+        font-size: 2vw;
+    }
+*/

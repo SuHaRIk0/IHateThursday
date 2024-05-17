@@ -1,254 +1,61 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿﻿.profile-container {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
+    background-color: #CFAE7D;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-a {
-  color: #0077cc;
+.profile-info {
+    margin-bottom: 20px;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    .profile-info p {
+        margin: 0;
+        width: 50%;
+    }
+
+        .profile-info p:nth-child(3),
+        .profile-info p:nth-child(4) {
+            width: 100%;
+        }
+
+.bookcase {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.bookshelf {
+    width: 30%;
+    background-color: #FEF9C6;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.book {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 5px;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.button-login {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
-
-
-/* Frame 41 */
-
-/*position: relative;
-width: 1000px;
-height: 700px;
-
-background: #782223;*/
-/* Tassle on the Palm */
-/*position: absolute;
-width: 400px;
-height: 50px;
-left: 21px;
-top: 1px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 48px;
-line-height: 60px;
-
-color: rgba(254, 249, 198, 0.5);*/
-/* Line 1 */
-/*position: absolute;
-width: 319.01px;
-height: 0px;
-left: 671px;
-top: 691px;
-
-border: 4px solid #FEF9C6;
-transform: rotate(-0.36deg);*/
-/* IHateThursday */
-/*position: absolute;
-width: 260px;
-height: 98px;
-left: 724px;
-top: 614px;
-
-font-family: 'Metal';
-font-style: normal;
-font-weight: 400;
-font-size: 48px;
-line-height: 98px;
-
-color: rgba(254, 249, 198, 0.7);*/
-/* Rectangle 13 */
-/*position: absolute;
-width: 933px;
-height: 555px;
-left: 33px;
-top: 72px;
-
-background: #CFAE7D;
-border-radius: 30px;*/
-/* Rectangle 14 */
-/*position: absolute;
-width: 213px;
-height: 38px;
-left: 65px;
-top: 194px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
-/* Rectangle 39 */
-/*position: absolute;
-width: 177px;
-height: 71px;
-left: 563px;
-top: 531px;
-
-background: rgba(254, 249, 198, 0.7);
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 30px;*/
-/* Rectangle 40 */
-/*position: absolute;
-width: 177px;
-height: 71px;
-left: 762px;
-top: 531px;
-
-background: #610809;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 30px;*/
-/* Rectangle 38 */
-/*position: absolute;
-width: 462px;
-height: 309px;
-left: 65px;
-top: 293px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
-/* Rectangle 32 */
-/*position: absolute;
-width: 213px;
-height: 38px;
-left: 314px;
-top: 194px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
-/* Редагувати профіль */
-/*position: absolute;
-width: 417px;
-height: 60px;
-left: 65px;
-top: 83px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 48px;
-line-height: 60px;*/
-/* identical to box height */
-/*color: #610809;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
-/* Псевдонім */
-/*position: absolute;
-width: 141px;
-height: 40px;
-left: 71px;
-top: 154px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #610809;*/
-/* Опис */
-/*position: absolute;
-width: 65px;
-height: 40px;
-left: 71px;
-top: 243px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #610809;*/
-/* Tag */
-/*position: absolute;
-width: 48px;
-height: 40px;
-left: 321px;
-top: 154px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #610809;*/
-/* Скасувати */
-/*position: absolute;
-width: 147px;
-height: 40px;
-left: 578px;
-top: 547px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #610809;*/
-/* Додати */
-/*position: absolute;
-width: 108px;
-height: 40px;
-left: 800px;
-top: 547px;
-
-font-family: 'Lobster';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;*/
-/* identical to box height */
-/*color: #CFAE7D;*/
-/* Rectangle 30 */
-/*position: absolute;
-width: 50px;
-height: 50px;
-left: 940px;
-top: 10px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
-/* Rectangle 31 */
-/*position: absolute;
-width: 300px;
-height: 42px;
-left: 627px;
-top: 14px;
-
-background: #FEF9C6;
-border-radius: 30px;*/
+    .button-login a {
+        background-color: #FEF9C6;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #782223;
+    }

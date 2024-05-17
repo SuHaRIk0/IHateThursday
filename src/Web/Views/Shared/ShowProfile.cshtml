@@ -1,23 +1,125 @@
-﻿@model Web.Models.ProfileViewModel
-@model Web.Models.SubInfoViewModel
+﻿@model UserProfileViewModel
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Web.styles.css" asp-append-version="true" />
+    <style>
+        .button-edit-profile, .button-add-book {
+            background-color: #420506;
+            color: #CFAE7D;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            align-self: flex-end;
+            text-align: center;
+            font-family: 'Kyiv*Type Titling';
+            font-style: normal;
+            font-weight: 200;
+            font-size: 2vw;
+            line-height: 3vw;
+            box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
+        }
+
+            .button-edit-profile:hover, .button-add-book:hover {
+                background-color: #610809;
+            }
+
+            .button-edit-profile a, .button-add-book a {
+                color: #CFAE7D;
+                text-decoration: none;
+            }
+    </style>
 </head>
 <body>
-    <h1>User Profile</h1>
-    <div>
-        <p><strong>Name:</strong> @Model.Name</p>
-        <p><strong>Tag:</strong> @Model.Tag</p>
-        <p><strong>Description:</strong> @Model.Description</p>
-        <p><strong>Genres Readed:</strong> @Model.GenresReaded</p>
-        <p><strong>Followers:</strong> @Model.followers_amount</p>
-        <p><strong>Subsscriptions:</strong> @Model.subscriptions_amount</p>
+    <div class="profile-container">
+
+        <div class="back">
+            <div>
+                <p><strong>Name:</strong> @Model.Profile.Name</p>
+                <p><strong>Tag:</strong> @Model.Profile.Tag</p>
+                <p><strong>Description:</strong> @Model.Profile.Description</p>
+                <p><strong>Genres Readed:</strong> @Model.Profile.GenresReaded</p>
+            </div>
+            <div>
+                <a class="button-edit-profile" asp-area="" asp-controller="Profile" asp-action="EditProfile" asp-route-id="@Model.Profile.Id">Редагувати профіль</a>
+            </div>
+        
+
+        <div class="bookcase">
+            <div class="bookshelf">
+                <h2>Planning</h2>
+                @if (Model.Books != null && Model.Books.Any())
+                {
+                    @foreach (var book in Model.Books)
+                    {
+                        @if (book.Status == "planning")
+                        {
+                            <div class="book">
+                                <img src=@book.Picture />
+                                <h3>@book.Title</h3>
+                                <h5>@book.AuthorName</h5>
+                            </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <p>no books here :/</p>
+                }
+            </div>
+
+            <div class="bookshelf">
+                <h2>In progress</h2>
+                @if (Model.Books != null && Model.Books.Any())
+                {
+                    @foreach (var book in Model.Books)
+                    {
+                        @if (book.Status == "inProgress")
+                        {
+                            <div class="book">
+                                <img src=@book.Picture />
+                                <h3>@book.Title</h3>
+                                <h5>@book.AuthorName</h5>
+                            </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <p>no books here :/</p>
+                }
+            </div>
+
+            <div class="bookshelf">
+                <h2>Finished</h2>
+                @if (Model.Books != null && Model.Books.Any())
+                {
+                    @foreach (var book in Model.Books)
+                    {
+                        @if (book.Status == "finished")
+                        {
+                            <div class="book">
+                                <img src=@book.Picture />
+                                <h3>@book.Title</h3>
+                                <h5>@book.AuthorName</h5>
+                            </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <p>no books here, go read some >:(</p>
+                }
+            </div>
+        </div>
+        <div class="button-login"><a class="button-add-book" asp-area="" asp-controller="Book" asp-action="Add">Додати книгу (це ж додаток з книжками все-таки)</a></div>
+        </div>
     </div>
 </body>
 </html>
