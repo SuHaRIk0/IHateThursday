@@ -1,6 +1,9 @@
-﻿namespace Domain.Entities
+﻿
+using Microsoft.AspNetCore.Identity;
+
+namespace Domain.Entities
 {
-    public class CommonUser
+    public class CommonUser : IdentityUser<int>
     {
         public int Id { get; set; }
         public string Name { get; set; }

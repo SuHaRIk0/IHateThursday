@@ -1,0 +1,94 @@
+﻿﻿@model List<Domain.Entities.Book>
+
+@{
+}
+<head>
+    <style>
+        .bookcase{
+            display: flex;
+            flex-direction: row;
+            padding: 15px;
+            background-color: black;
+        }
+        .bookshelf{
+            margin: 10px;
+            padding: 10px;
+            background-color: dimgray;
+        }
+        .book{
+            margin: 5px;
+            padding: 10px;
+            background-color: lightgray;
+        }
+        h3{
+            color: firebrick;
+        }
+    </style>
+</head>
+<div class="bookcase">
+    <div class="bookshelf">
+        <h2>Planning</h2>
+        @if (Model != null && Model.Any())
+        {
+            @foreach(var book in Model)
+            {
+                @if (book.Status == "planning")
+                {
+                    <div class="book">
+                        <img src=@book.Picture/>
+                        <h3>@book.Title</h3>
+                        <h5>@book.AuthorName</h5>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <p>no books here :/</p>
+        }
+    </div>
+
+    <div class="bookshelf">
+        <h2>In progress</h2>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var book in Model)
+            {
+                @if (book.Status == "in_progress")
+                {
+                    <div class="book">
+                        <img src=@book.Picture />
+                        <h3>@book.Title</h3>
+                        <h5>@book.AuthorName</h5>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <p>no books here :/</p>
+        }
+    </div>
+
+    <div class="bookshelf">
+        <h2>Finished</h2>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var book in Model)
+            {
+                @if (book.Status == "finished")
+                {
+                    <div class="book">
+                        <img src=@book.Picture />
+                        <h3>@book.Title</h3>
+                        <h5>@book.AuthorName</h5>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <p>no books here, go read some >:(</p>
+        }
+    </div>
+</div>

@@ -1,6 +1,30 @@
-﻿﻿@model string
+﻿﻿@model BookDto[]
 
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
-    <h3>@Model</h3>
+<head>
+    <title>Recomendations</title>
+    <form id="myForm" action="@Url.Action("GetSearch", "Search")" method="get">
+        <input type="text" id="title" name="title" placeholder="Введіть назву книги">
+        <button type="submit" class="btn btn-primary">Шукати</button>
+    </form>
+</head>
+<body>
+    @{
+        if(Model == null)
+        {
+            <h3>Вибачте, але ми нічого не знайшли :(</h3>
+        }
+        else
+        {
+            <p>@Model.Title</p>
+            <p>@Model.AuthorName</p>
+            <p>@Model.LanguageBook</p>
+            <p>@Model.Description</p>
+            <p>@Model.Genre</p>
+            <p>@Model.Status</p>
+            // <p>@Model.Id</p>
+        }
+    }
+</body>
 </html>
