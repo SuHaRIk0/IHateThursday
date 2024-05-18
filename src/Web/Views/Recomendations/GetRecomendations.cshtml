@@ -3,49 +3,109 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recomendations</title>
-    <form id="myForm" action="@Url.Action("GetSearch", "Search")" method="get">
-        <input type="text" id="title" name="title" placeholder="Введіть назву книги">
-        <button type="submit" class="btn btn-primary">Шукати</button>
-    </form>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #610809;
+            ;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-form {
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+            .search-form input {
+                padding: 10px;
+                font-size: 16px;
+                color: gray;
+            }
+
+            .search-form button {
+                padding: 10px;
+                font-size: 16px;
+                background-color: #CFAE7D;
+                color: #420506;
+                border: none;
+                cursor: pointer;
+            }
+
+                .search-form button:hover {
+                    background-color: #FEF9C6;
+                }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #CFAE7D;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+            .card h3 {
+                margin-top: 0;
+            }
+
+            .card p {
+                margin: 10px 0;
+            }
+
+        .card-status {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    @{
-        if(Model == null)
-        {
-            <p>Користувача з таким ID не існує!</p>
-        }
-        else if(Model.GetLength(0) == 0)
-        {
-            <p>Вибачте, але ми не знайшли книжок, які були б вам до вподоби :(</p>
-        }
-        else
-        {
-            <p id="recomendationtbl">Ось, що ми для вас знайшли :)</p>
-            <table aria-describedby="recomendationtbl">
-                <thead>
-                    <tr>
-                        <th>Назва</th>
-                        <th>Автор</th>
-                        <th>Опис</th>
-                        <th>Стан</th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div class="container">
+        <form id="myForm" class="search-form" action="@Url.Action("GetSearch", "Search")" method="get">
+            <input type="text" id="title" name="title" placeholder="Введіть назву книги">
+            <button type="submit" class="btn btn-primary">Шукати</button>
+        </form>
+        @{
+            if (Model == null)
+            {
+                <p>Користувача з таким ID не існує!</p>
+            }
+            else if (Model.Length == 0)
+            {
+                <p>Вибачте, але ми не знайшли книжок, які були б вам до вподоби :(</p>
+            }
+            else
+            {
+                <div class="cards-container">
                     @{
-                        for (int i = 0; i < Model.GetLength(0); i++)
+                        for (int i = 0; i < Model.Length; i++)
                         {
-                            <tr>
-                                <td>@Model[i].Title</td>
-                                <td>@Model[i].AuthorName</td>
-                                <td>@Model[i].Description</td>
-                                <td>@Model[i].Status</td>
-                            </tr>
+                            <div class="card">
+                                <h3>@Model[i].Title</h3>
+                                <p><strong>Автор:</strong> @Model[i].AuthorName</p>
+                                <p><strong>Опис:</strong> @Model[i].Description</p>
+                                <p class="card-status"><strong>Стан:</strong> @Model[i].Status</p>
+                            </div>
                         }
                     }
-                </tbody>
-            </table>
+                </div>
+            }
         }
-    }
+    </div>
 </body>
 </html>

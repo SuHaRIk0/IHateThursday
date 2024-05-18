@@ -152,8 +152,15 @@
         </div>
 
         <div class="input-group">
+            @* <label for="status">Status: </label>
+            <input type="text" id="status" asp-for="Status" /> *@
             <label for="status">Status: </label>
-            <input type="text" id="status" asp-for="Status" />
+            <select class="form-select" aria-label="Default select example" id="status" asp-for="Status">
+                <option selected>I know it's kinda annoying, but you have to choose the status too</option>
+                <option value="planning">Planning</option>
+                <option value="inProgress">In progress</option>
+                <option value="finished">Finished</option>
+            </select>
         </div>
     </div>
 
