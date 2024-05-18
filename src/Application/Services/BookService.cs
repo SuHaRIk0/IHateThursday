@@ -54,5 +54,16 @@ namespace Application.Services
 
             return dummy;
         }
+<<<<<<< HEAD
+=======
+
+        public async Task<IEnumerable<Book>?> GetBooksByIdAsync(int Id)
+        {
+            var books = await _bookRepository.GetBooksByIdAsync(Id);
+            return books;
+        }
+
+        //public async Task Add
+>>>>>>> origin/third_block
     }
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿﻿ @using Microsoft.AspNetCore.Identity
+=======
+﻿ @using Microsoft.AspNetCore.Identity
+>>>>>>> origin/third_block
  @using System.Security.Claims
 
 
@@ -24,9 +28,15 @@
         @if (User.Identity.IsAuthenticated)
         {
             <div class="form-logout">
+<<<<<<< HEAD
                 <form asp-area="" asp-controller="Login" asp-action="Logout">
                     <button class="button-logout" type="submit">Вийти</button>
                 </form>
+=======
+                    <form asp-area="" asp-controller="Login" asp-action="Logout">
+                    <button class="button-logout" type="submit">Вийти</button>
+                    </form>
+>>>>>>> origin/third_block
             </div>
             <div class="button-recomendations">
                 <a class="button-recomendations" asp-area="" asp-controller="Recomendations" asp-action="GetRecomendations" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Рекомендації</a>

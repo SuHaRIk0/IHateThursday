@@ -6,4 +6,8 @@ namespace Domain.IService
     {
         Task<Book?> GetByTitleAsync(string title, CancellationToken cancellationToken);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

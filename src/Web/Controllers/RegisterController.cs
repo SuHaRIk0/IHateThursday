@@ -27,7 +27,11 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 var tag = "@" + model.UserName.ToLower();
+<<<<<<< HEAD
                 var user = new CommonUser { Email = model.Email, UserName = model.UserName, Name = "test", Tag = tag, Password = model.Password, Description = "I`m cool!", GenresReaded = "Horror" };
+=======
+                var user = new CommonUser { Email = model.Email, UserName = model.UserName, Name = "test", Tag = tag, Password = model.Password, Description = "I`m cool!", GenresReaded = "Horror"};
+>>>>>>> origin/third_block
                 var result = await _authService.RegisterAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -49,4 +53,8 @@ namespace Web.Controllers
             return View();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

@@ -12,4 +12,9 @@ namespace Domain.IService
 
         //Task<ProfileViewModel?> TransformUser(CommonUser updatedUser);
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> origin/third_block

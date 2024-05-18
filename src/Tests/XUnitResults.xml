@@ -1,0 +1,24 @@
+<assemblies timestamp="04/03/2024 14:53:44">
+  <assembly name="C:\Users\vadum\Downloads\schoolwork\SECOND_SEM\PE\TassleOnthePalm\src\Tests\bin\Debug\net8.0\Tests.dll" run-date="2024-04-03" run-time="14:53:44" total="5" passed="5" failed="0" skipped="0" time="2.493" errors="0">
+    <errors />
+    <collection total="3" passed="3" failed="0" skipped="0" name="Test collection for Tests.BookTransformServiceTests" time="0.066">
+      <test name="Tests.BookTransformServiceTests.GetBookDtosAsync_NullInput_ReturnsNull" type="Tests.BookTransformServiceTests" method="GetBookDtosAsync_NullInput_ReturnsNull" time="0.0565424" result="Pass">
+        <traits />
+      </test>
+      <test name="Tests.BookTransformServiceTests.GetBookDtosAsync_EmptyInput_ReturnsEmptyCollection" type="Tests.BookTransformServiceTests" method="GetBookDtosAsync_EmptyInput_ReturnsEmptyCollection" time="0.0013939" result="Pass">
+        <traits />
+      </test>
+      <test name="Tests.BookTransformServiceTests.GetBookDtosAsync_NonEmptyInput_ReturnsBookDtos" type="Tests.BookTransformServiceTests" method="GetBookDtosAsync_NonEmptyInput_ReturnsBookDtos" time="0.0076291" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="2" passed="2" failed="0" skipped="0" name="Test collection for Tests.RecomendationServiceTests" time="0.072">
+      <test name="Tests.RecomendationServiceTests.GetRecomendationsAsync_UserNotFound_ReturnsNull" type="Tests.RecomendationServiceTests" method="GetRecomendationsAsync_UserNotFound_ReturnsNull" time="0.0603309" result="Pass">
+        <traits />
+      </test>
+      <test name="Tests.RecomendationServiceTests.GetRecomendationsAsync_UserFound_ReturnsBooks" type="Tests.RecomendationServiceTests" method="GetRecomendationsAsync_UserFound_ReturnsBooks" time="0.0118529" result="Pass">
+        <traits />
+      </test>
+    </collection>
+  </assembly>
+</assemblies>

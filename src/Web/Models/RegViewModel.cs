@@ -20,4 +20,8 @@ namespace Web.Models
             Password = dummy.Password;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

@@ -20,4 +20,8 @@ namespace Web.Models
             RememberMe = false;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

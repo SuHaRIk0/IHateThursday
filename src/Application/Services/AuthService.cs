@@ -71,4 +71,8 @@ namespace Application.Services
         }
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

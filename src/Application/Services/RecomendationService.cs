@@ -19,7 +19,11 @@ namespace Application.Services
             _logger = logger;
         }
 
+<<<<<<< HEAD
         public async Task<IEnumerable<Book>?> GetRecomendationsAsync(int id, CancellationToken cancellationToken = default)
+=======
+        public async Task<IEnumerable<Book>?> GetRecomendationsAsync(int id, CancellationToken cancellationToken=default)
+>>>>>>> origin/third_block
         {
             _logger.LogInformation("Started database operations...");
 
@@ -35,4 +39,8 @@ namespace Application.Services
             return null;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

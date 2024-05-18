@@ -20,8 +20,16 @@ namespace Web.Controllers
         public async Task<IActionResult> GetRecomendations(int id, CancellationToken cancellationToken = default)
         {
             var books = await _recomendationService.GetRecomendationsAsync(id, cancellationToken);
+<<<<<<< HEAD
 
             return View(await _bookTransformService.GetBookDtosAsync(books, cancellationToken));
         }
     }
 }
+=======
+            
+            return View(await _bookTransformService.GetBookDtosAsync(books, cancellationToken));
+        }
+    }
+}
+>>>>>>> origin/third_block

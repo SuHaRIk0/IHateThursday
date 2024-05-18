@@ -14,4 +14,8 @@ namespace Domain.IRepository
 
         Task<CommonUser?> GetUserAsync(string email);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

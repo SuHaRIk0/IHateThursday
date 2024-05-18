@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 ﻿@model Domain.DTO.BookDto
+=======
+﻿@model BookDto
+>>>>>>> origin/third_block
 
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
 <head>
+<<<<<<< HEAD
     <title>Recomendations</title>
     <form id="myForm" action="@Url.Action("GetSearch", "Search")" method="get">
         <input type="text" id="title" name="title" placeholder="Введіть назву книги">
@@ -28,3 +33,97 @@
     }
 </body>
 </html>
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #610809;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-form {
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+            .search-form input {
+                padding: 10px;
+                font-size: 16px;
+                color: gray;
+            }
+
+            .search-form button {
+                padding: 10px;
+                font-size: 16px;
+                background-color: #CFAE7D;
+                color: #420506;
+                border: none;
+                cursor: pointer;
+            }
+
+                .search-form button:hover {
+                    background-color: #FEF9C6;
+                }
+
+        .card {
+            background-color: #CFAE7D;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+
+            .card p {
+                margin: 10px 0;
+                color: #420506;
+            }
+
+            .card h3 {
+                margin-top: 0;
+                color: #420506;
+            }
+
+        .card-status {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="myForm" class="search-form" action="@Url.Action("GetSearch", "Search")" method="get">
+            <input type="text" id="title" name="title" placeholder="Введіть назву книги">
+            <button type="submit" class="btn btn-primary">Шукати</button>
+        </form>
+        @{
+            if (Model == null)
+            {
+                <h3>Вибачте, але ми нічого не знайшли :(</h3>
+            }
+            else
+            {
+                <div class="card">
+                    <h3>@Model.Title</h3>
+                    <p><strong>Автор:</strong> @Model.AuthorName</p>
+                    <p><strong>Мова:</strong> @Model.LanguageBook</p>
+                    <p><strong>Опис:</strong> @Model.Description</p>
+                    <p><strong>Жанр:</strong> @Model.Genre</p>
+                    <p class="card-status"><strong>Стан:</strong> @Model.Status</p>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>
+>>>>>>> origin/third_block

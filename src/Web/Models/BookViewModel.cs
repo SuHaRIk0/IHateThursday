@@ -39,4 +39,8 @@ namespace Web.Models
             Status = dummy.Status;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

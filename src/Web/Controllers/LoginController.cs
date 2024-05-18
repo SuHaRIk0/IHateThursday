@@ -57,11 +57,19 @@ namespace Web.Controllers
 
             await _authService.LogoutAsync();
 
+<<<<<<< HEAD
             return RedirectToAction("Index", "Home");
+=======
+            return RedirectToAction("Index", "Home"); 
+>>>>>>> origin/third_block
         }
         public IActionResult AccessDenied()
         {
             return View();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block

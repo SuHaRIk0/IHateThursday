@@ -11,7 +11,11 @@ namespace Application.Services
 
         private readonly ILogger<BookSearchService> _logger;
 
+<<<<<<< HEAD
         public BookSearchService(IBookRepository bookRepository, ILogger<BookSearchService> logger)
+=======
+        public BookSearchService(IBookRepository bookRepository, ILogger<BookSearchService> logger) 
+>>>>>>> origin/third_block
         {
             _bookRepository = bookRepository;
             _logger = logger;
@@ -22,7 +26,11 @@ namespace Application.Services
             _logger.LogInformation("Started database operations...");
             var book = await _bookRepository.GetByTitleAsync(title, cancellationToken);
 
+<<<<<<< HEAD
             if (book != null)
+=======
+            if (book != null) 
+>>>>>>> origin/third_block
             {
                 _logger.LogInformation("Retrivial successful!");
                 return book;
@@ -32,4 +40,8 @@ namespace Application.Services
             return null;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/third_block
