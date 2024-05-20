@@ -15,11 +15,13 @@ namespace Web.Controllers
         private readonly IProfileService _profileService;
         private readonly IBookService _bookService;
         private readonly TopDbContext topDbContex;
+        private readonly ISubscriptionSearchService _subscriptionSearchService;
 
-        public ProfileController(IProfileService profileService, IBookService bookService, TopDbContext topDbContex)
+        public ProfileController(IProfileService profileService, IBookService bookService,ISubscriptionSearchService subscriptionSearchService, TopDbContext topDbContex)
         {
             _profileService = profileService;
             _bookService = bookService;
+            _subscriptionSearchService = subscriptionSearchService;
             this.topDbContex = topDbContex;
         }
 
@@ -45,14 +47,31 @@ namespace Web.Controllers
         {
             var profile = await _profileService.ShowByIdAsync(id);
             var books = await _bookService.GetBooksByIdAsync(id);
+            var subscribtions = await _subscriptionSearchService.GetSubscriptionsByIdAsync(id);
+            var followers = await _subscriptionSearchService.GetFollowersByIdAsync(id);
 
-            var viewModel = new UserProfileViewModel
+            
+
+            var userProfileViewModel = new UserProfileViewModel
             {
                 Profile = new ProfileViewModel(profile),
                 Books = books.Select(book => new BookViewModel(book)).ToList()
             };
 
-            return View(viewModel);
+            var subInfoViewModel = new SubInfoViewModel
+            {
+                followers_amount = followers.Count(),
+                subscribtions_amount = subscribtions.Count(),
+                followers = followers.ToList(),
+                subscriptions = subscribtions.ToList()
+            };
+
+            var fullProfile = new FullProfileViewModel {
+                profileViewModel = userProfileViewModel,
+                subInfoViewModel = subInfoViewModel
+            };
+
+            return View(fullProfile);
         }
 
 
@@ -72,6 +91,41 @@ namespace Web.Controllers
 
             //return View(new ProfileViewModel(dummi2));
             return RedirectToAction("ShowProfile", "Profile", new { id = id.ToString() });
+        }
+
+        [HttpGet]
+        public IActionResult FindNewFriend(int id)
+        {
+            var model = new FindNewFriendViewModel { CurrentUserId = id };
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchFriend(FindNewFriendViewModel model)
+        {
+
+            var user = await _profileService.GetByTagAsync(model.Tag);
+
+            if (user == null)
+            {
+                return View("FindNewFriend", model);
+            }
+
+            model.FoundUser = user;
+
+            return View("FindNewFriend", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFriend(FindNewFriendViewModel model)
+        {
+            if (model.FoundUser == null)
+            {
+                return NotFound();
+            }
+
+            await _subscriptionSearchService.AddSubscriptionAsync(model.CurrentUserId, model.FoundUser.Id);
+            return RedirectToAction("ShowProfile", new { id = model.CurrentUserId });
         }
     }
 }

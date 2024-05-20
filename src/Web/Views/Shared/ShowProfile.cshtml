@@ -1,4 +1,4 @@
-﻿@model UserProfileViewModel
+﻿@model FullProfileViewModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,22 +41,44 @@
 
         <div class="back">
             <div>
-                <p><strong>Name:</strong> @Model.Profile.Name</p>
-                <p><strong>Tag:</strong> @Model.Profile.Tag</p>
-                <p><strong>Description:</strong> @Model.Profile.Description</p>
-                <p><strong>Genres Readed:</strong> @Model.Profile.GenresReaded</p>
+                <p><strong>Name : </strong> @Model.profileViewModel.Profile.Name</p>
+                <p><strong>Tag : </strong> @Model.profileViewModel.Profile.Tag</p>
+                <p><strong>Description : </strong> @Model.profileViewModel.Profile.Description</p>
+                <p><strong>Genres Readed : </strong> @Model.profileViewModel.Profile.GenresReaded</p>
+                <p><strong>Followers amount : </strong> @Model.subInfoViewModel.followers_amount</p>
+                <p><strong>Subscriptios amount : </strong> @Model.subInfoViewModel.subscribtions_amount</p>
+                <select id="followersDropdown" name="followersDropdown">
+                    @foreach (var follower in Model.subInfoViewModel.followers)
+                    {
+                        <option>@follower</option>
+                    }
+                </select>
+
+                <select id="subscriptionsDropdown" name="subDropdown">
+                    @foreach (var sub in Model.subInfoViewModel.subscriptions)
+                    {
+                        <option>@sub</option>
+                    }
+                </select>
+
+
+                    <!-- Button to find new friend -->
+                <div class="button-login">
+                    <a class="button-add-book" asp-area="" asp-controller="Profile" asp-action="FindNewFriend" asp-route-id="@Model.profileViewModel.Profile.Id">Find new friend</a>
+                </div>
+
             </div>
             <div>
-                <a class="button-edit-profile" asp-area="" asp-controller="Profile" asp-action="EditProfile" asp-route-id="@Model.Profile.Id">Редагувати профіль</a>
+                <a class="button-edit-profile" asp-area="" asp-controller="Profile" asp-action="EditProfile" asp-route-id="@Model.profileViewModel.Profile.Id">Редагувати профіль</a>
             </div>
         
 
         <div class="bookcase">
             <div class="bookshelf">
                 <h2>Planning</h2>
-                @if (Model.Books != null && Model.Books.Any())
+                    @if (Model.profileViewModel.Books != null && Model.profileViewModel.Books.Any())
                 {
-                    @foreach (var book in Model.Books)
+                        @foreach (var book in Model.profileViewModel.Books)
                     {
                         @if (book.Status == "planning")
                         {
@@ -76,9 +98,9 @@
 
             <div class="bookshelf">
                 <h2>In progress</h2>
-                @if (Model.Books != null && Model.Books.Any())
+                    @if (Model.profileViewModel.Books != null && Model.profileViewModel.Books.Any())
                 {
-                    @foreach (var book in Model.Books)
+                        @foreach (var book in Model.profileViewModel.Books)
                     {
                         @if (book.Status == "inProgress")
                         {
@@ -98,9 +120,9 @@
 
             <div class="bookshelf">
                 <h2>Finished</h2>
-                @if (Model.Books != null && Model.Books.Any())
+                    @if (Model.profileViewModel.Books != null && Model.profileViewModel.Books.Any())
                 {
-                    @foreach (var book in Model.Books)
+                        @foreach (var book in Model.profileViewModel.Books)
                     {
                         @if (book.Status == "finished")
                         {

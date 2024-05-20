@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
@@ -39,12 +40,14 @@ builder.Services.AddIdentity<CommonUser, IdentityRole<int>>(options =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<ISubscriptionRepository,SubscriptionRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IRecomendationService, RecomendationService>();
 builder.Services.AddScoped<IBookTransformService, BookTransformService>();
 builder.Services.AddScoped<IBookSearchService, BookSearchService>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<ISubscriptionSearchService, SubscriptionSearchService>();
 
 
 var app = builder.Build();
@@ -97,6 +100,16 @@ app.UseEndpoints(endpoints =>
         name: "search",
         pattern: "{controller=Search}/{action=GetSearch}/{title?}",
         defaults: new { controller = "Search" });
+
+    endpoints.MapControllerRoute(
+    name: "findnewfriend",
+    pattern: "Profile/FindNewFriend/{id?}",
+    defaults: new { controller = "Profile", action = "FindNewFriend" });
+
+    endpoints.MapControllerRoute(
+    name: "searchfriend",
+    pattern: "Profile/SearchFriend/{id?}",
+    defaults: new { controller = "Profile", action = "SearchFriend" });
 });
 
 app.Run();

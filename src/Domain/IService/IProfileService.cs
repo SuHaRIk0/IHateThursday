@@ -10,6 +10,9 @@ namespace Domain.IService
 
         Task<CommonUser?> ShowByIdAsync(int id);
 
+        Task<CommonUser?> GetByTagAsync(string tag);
+
+
         //Task<ProfileViewModel?> TransformUser(CommonUser updatedUser);
     }
 }

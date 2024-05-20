@@ -4,6 +4,7 @@ using Domain.IService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Domain.DTO;
+using System.Threading;
 
 namespace Application.Services
 {
@@ -51,5 +52,13 @@ namespace Application.Services
 
             return dummy;
         }
+
+        public async Task<CommonUser?> GetByTagAsync(string tag)
+        {
+            var dummy = await _userRepository.GetByTagAsync(tag);
+
+            return dummy;
+        }
+
     }
 }

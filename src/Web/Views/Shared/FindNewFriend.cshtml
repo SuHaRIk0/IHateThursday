@@ -1,0 +1,34 @@
+﻿@model FindNewFriendViewModel
+
+@{
+    ViewData["Title"] = "Find New Friend";
+}
+
+<h1>Find New Friend</h1>
+
+<form asp-action="SearchFriend" method="get">
+    <div class="form-group">
+        <label asp-for="Tag">Enter user tag:</label>
+        <input asp-for="Tag" class="form-control" />
+        <input type="hidden" asp-for="CurrentUserId" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model.FoundUser != null)
+{
+    <h2>User Found</h2>
+    <p><strong>Name:</strong> @Model.FoundUser.Name</p>
+    <p><strong>Tag:</strong> @Model.FoundUser.Tag</p>
+    <p><strong>Description:</strong> @Model.FoundUser.Description</p>
+    <p><strong>Genres Readed:</strong> @Model.FoundUser.GenresReaded</p>
+    <form asp-action="AddFriend" method="post">
+        <input type="hidden" asp-for="CurrentUserId" />
+        <input type="hidden" asp-for="FoundUser.Id" />
+        <button type="submit" class="btn btn-primary">Add Friend</button>
+    </form>
+}
+else if (Model.Tag != null)
+{
+    <p>No user found with tag: @Model.Tag</p>
+}
