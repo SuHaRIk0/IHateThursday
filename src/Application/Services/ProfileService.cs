@@ -51,5 +51,11 @@ namespace Application.Services
 
             return dummy;
         }
+        public async Task<CommonUser?> GetByTagAsync(string tag)
+        {
+            var dummy = await _userRepository.GetByTagAsync(tag);
+
+            return dummy;
+        }
     }
 }

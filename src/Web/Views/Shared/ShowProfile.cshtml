@@ -35,6 +35,31 @@
                 text-decoration: none;
             }
 
+            [type="submit"] {
+            background-color: #420506;
+            color: #CFAE7D;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 20vw;
+            heigt: 20vw;
+            align-self: flex-end;
+            text-align: center;
+            font-family: 'Kyiv*Type Titling';
+            font-style: normal;
+            font-weight: 230;
+            font-size: 2vw;
+            line-height: 3vw;
+            box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
+            margin: 0.5vw;
+        }
+
+        [type="submit"]:hover {
+                background-color: #610809;
+            }
+
 
     </style>
 </head>
@@ -47,81 +72,111 @@
                 <p><strong>Tag:</strong> @Model.Profile.Tag</p>
                 <p><strong>Description:</strong> @Model.Profile.Description</p>
                 <p><strong>Genres Readed:</strong> @Model.Profile.GenresReaded</p>
+                <p><strong>Followers amount : </strong> @Model.SubInfo.Followers_amount</p>
+                <p><strong>Subscriptios amount : </strong> @Model.SubInfo.Subscribtions_amount</p>
+
+
+                <form asp-action="RemoveFollower" method="post" id="followersForm">
+                    <input type="hidden" name="currentUserId" value="@Model.Profile.Id" />
+                    <select id="followersDropdown" name="followerTag">
+                        @foreach (var follower in Model.SubInfo.Followers)
+                        {
+                            <option value="@follower">@follower</option>
+                        }
+                    </select>
+                    <button type="submit" class="button-action">Remove Follower</button>
+                </form>
+
+                <form asp-action="Unfollow" method="post" id="subscriptionsForm">
+                    <input type="hidden" name="currentUserId" value="@Model.Profile.Id" />
+                    <select id="subscriptionsDropdown" name="subscriptionTag">
+                        @foreach (var sub in Model.SubInfo.Subscriptions)
+                        {
+                            <option value="@sub">@sub</option>
+                        }
+                    </select>
+                    <button type="submit" class="button-action">Unfollow</button>
+                </form>
             </div>
             <div>
-                <a class="button-edit-profile" asp-area="" asp-controller="Profile" asp-action="EditProfile" asp-route-id="@Model.Profile.Id">Редагувати профіль</a>
-            </div>
-        
-
-        <div class="bookcase">
-            <div class="bookshelf">
-                <h2>Planning</h2>
-                @if (Model.Books != null && Model.Books.Any())
-                {
-                    @foreach (var book in Model.Books)
-                    {
-                        @if (book.Status == "planning")
-                        {
-                            <div class="book">
-                                <img src=@book.Picture />
-                                <h3>@book.Title</h3>
-                                <h5>@book.AuthorName</h5>
-                            </div>
-                        }
-                    }
-                }
-                else
-                {
-                    <p>no books here :/</p>
-                }
+            <div class="buttons">
+                    <a class="button-add-book" asp-area="" asp-controller="Profile" asp-action="FindNewFriend" asp-route-id="@Model.Profile.Id">Find new friend</a>
+                    <a class="button-edit-profile" asp-area="" asp-controller="Profile" asp-action="EditProfile" asp-route-id="@Model.Profile.Id">Редагувати профіль</a>
             </div>
 
-            <div class="bookshelf">
-                <h2>In progress</h2>
-                @if (Model.Books != null && Model.Books.Any())
-                {
-                    @foreach (var book in Model.Books)
+            <div class="bookcase">
+                <div class="bookshelf">
+                    <h2>Planning</h2>
+                    @if (Model.Books != null && Model.Books.Any())
                     {
-                        @if (book.Status == "inProgress")
+                        @foreach (var book in Model.Books)
                         {
-                            <div class="book">
-                                <img src=@book.Picture />
-                                <h3>@book.Title</h3>
-                                <h5>@book.AuthorName</h5>
-                            </div>
+                            @if (book.Status == "planning")
+                            {
+                                <div class="book">
+                                    <img src=@book.Picture />
+                                    <h3>@book.Title</h3>
+                                    <h5>@book.AuthorName</h5>
+                                </div>
+                            }
                         }
                     }
-                }
-                else
-                {
-                    <p>no books here :/</p>
-                }
+                    else
+                    {
+                        <p>no books here :/</p>
+                    }
+                </div>
+
+                <div class="bookshelf">
+                    <h2>In progress</h2>
+                    @if (Model.Books != null && Model.Books.Any())
+                    {
+                        @foreach (var book in Model.Books)
+                        {
+                            @if (book.Status == "inProgress")
+                            {
+                                <div class="book">
+                                    <img src=@book.Picture />
+                                    <h3>@book.Title</h3>
+                                    <h5>@book.AuthorName</h5>
+                                </div>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <p>no books here :/</p>
+                    }
+                </div>
+
+                <div class="bookshelf">
+                    <h2>Finished</h2>
+                    @if (Model.Books != null && Model.Books.Any())
+                    {
+                        @foreach (var book in Model.Books)
+                        {
+                            @if (book.Status == "finished")
+                            {
+                                <div class="book">
+                                    <img src=@book.Picture />
+                                    <h3>@book.Title</h3>
+                                    <h5>@book.AuthorName</h5>
+                                </div>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <p>no books here, go read some >:(</p>
+                    }
+                </div>
             </div>
 
-            <div class="bookshelf">
-                <h2>Finished</h2>
-                @if (Model.Books != null && Model.Books.Any())
-                {
-                    @foreach (var book in Model.Books)
-                    {
-                        @if (book.Status == "finished")
-                        {
-                            <div class="book">
-                                <img src=@book.Picture />
-                                <h3>@book.Title</h3>
-                                <h5>@book.AuthorName</h5>
-                            </div>
-                        }
-                    }
-                }
-                else
-                {
-                    <p>no books here, go read some >:(</p>
-                }
-            </div>
-        </div>
-        <div class="button-login"><a class="button-add-book" asp-area="" asp-controller="Book" asp-action="Add">Додати книгу (це ж додаток з книжками все-таки)</a></div>
+            <div class="button-login"><a class="button-add-book" asp-area="" asp-controller="Book" asp-action="Add">Додати книгу (це ж додаток з книжками все-таки)</a></div>
         </div>
     </div>
+    @* <div class="name-container">
+        <h1>I Hate Thursday</h1>
+    </div> *@
 </body>
 </html>

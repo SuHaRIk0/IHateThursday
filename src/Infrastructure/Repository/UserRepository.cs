@@ -35,5 +35,11 @@ namespace Infrastructure.Repository
         {
             throw new NotImplementedException();
         }
+
+        public async Task<CommonUser?> GetByTagAsync(string tag, CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Set<CommonUser>()
+                .FirstOrDefaultAsync(u => tag.Contains(u.Tag), cancellationToken);
+        }
     }
 }

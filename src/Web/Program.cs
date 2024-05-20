@@ -45,6 +45,8 @@ builder.Services.AddScoped<IRecomendationService, RecomendationService>();
 builder.Services.AddScoped<IBookTransformService, BookTransformService>();
 builder.Services.AddScoped<IBookSearchService, BookSearchService>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+builder.Services.AddScoped<ISubscriptionSearchService, SubscriptionSearchService>();
 
 
 var app = builder.Build();
@@ -97,6 +99,26 @@ app.UseEndpoints(endpoints =>
         name: "search",
         pattern: "{controller=Search}/{action=GetSearch}/{title?}",
         defaults: new { controller = "Search" });
+
+    endpoints.MapControllerRoute(
+    name: "findnewfriend",
+    pattern: "Profile/FindNewFriend/{id?}",
+    defaults: new { controller = "Profile", action = "FindNewFriend" });
+
+    endpoints.MapControllerRoute(
+    name: "searchfriend",
+    pattern: "Profile/SearchFriend/{id?}",
+    defaults: new { controller = "Profile", action = "SearchFriend" });
+
+    endpoints.MapControllerRoute(
+    name: "unfollow",
+    pattern: "Profile/Unfollow",
+    defaults: new { controller = "Profile", action = "Unfollow" });
+
+    endpoints.MapControllerRoute(
+        name: "removefollower",
+        pattern: "Profile/RemoveFollower",
+        defaults: new { controller = "Profile", action = "RemoveFollower" });
 });
 
 app.Run();

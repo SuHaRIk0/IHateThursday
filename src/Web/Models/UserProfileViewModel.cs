@@ -6,5 +6,5 @@ public class UserProfileViewModel
 {
     public ProfileViewModel Profile { get; set; }
     public List<BookViewModel> Books { get; set; }
-
+    public SubInfoViewModel SubInfo { get; set; }
 }

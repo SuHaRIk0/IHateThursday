@@ -33,4 +33,10 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Auth\" />
+    <Folder Include="Views\FindNewFriend\" />
+    <Folder Include="Views\Profile\" />
+  </ItemGroup>
+
 </Project>

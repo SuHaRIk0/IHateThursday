@@ -16,13 +16,11 @@ namespace Web.Controllers
             _bookTransformService = bookTransformService;
         }
 
-        // Matches Search/GetSearch?title=Harry+Potter+and+the+Sorcerers+Stone
         [HttpGet("GetSearch")]
         public async Task<IActionResult> GetSearch([FromQuery] string title, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(title))
             {
-                // Обробка помилки, якщо заголовок відсутній
                 return BadRequest("Title is required.");
             }
             var book = await _bookSearchService.GetByTitleAsync(title, cancellationToken);

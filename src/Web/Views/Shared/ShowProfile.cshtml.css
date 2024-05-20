@@ -5,15 +5,30 @@
     right: 0;
     margin: auto;
     width: calc(100% - 50px);
-    height: calc(100% - 50px);
+    height: absolute;
     background-color: #CFAE7D;
     border-radius: 20px;
     padding: 20px;
     box-sizing: border-box;
+    margin-bottom: 20px;
+}
+/*.name-container {
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}*/
+
+/*.name-container h1 {
+    text-decoration: none;
+    color: #CFAE7D;
+}*/
+
+.buttons {
+    margin-top: 20px;
 }
 
 .profile-info {
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .profile-info p {
