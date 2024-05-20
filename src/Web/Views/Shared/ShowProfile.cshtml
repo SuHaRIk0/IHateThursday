@@ -38,6 +38,38 @@
         h3 {
             color: firebrick;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: whitesmoke;
+            margin: 20% auto;
+            padding: 20px;
+            width: 50%;
+            border-radius: 30px;
+            position: relative;
+            font-family: serif;        
+        }
+
+        .modal-content h2 {
+            color: firebrick;
+        }
+
+        .close {
+            color: dimgray;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +95,7 @@
     </div>
 
     <div class="bookcase">
-        <div class="bookshelf">
+        <div class="bookshelf" id="planning">
             <h2>Planning</h2>
             @if (Model.Books != null && Model.Books.Any())
             {
@@ -71,10 +103,14 @@
                 {
                     @if (book.Status == "planning")
                     {
-                        <div class="book">
+                        <div class="book" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
                             <img src=@book.Picture />
                             <h3>@book.Title</h3>
                             <h5>@book.AuthorName</h5>
+                            <a asp-area=""
+                               asp-controller="Book"
+                               asp-action="Edit"
+                               asp-route-id="@book.Id">Go edit this book, if u don't like it so much</a>
                         </div>
                     }
                 }
@@ -85,7 +121,7 @@
             }
         </div>
 
-        <div class="bookshelf">
+        <div class="bookshelf" id="in_progress">
             <h2>In progress</h2>
             @if (Model.Books != null && Model.Books.Any())
             {
@@ -93,10 +129,14 @@
                 {
                     @if (book.Status == "in_progress")
                     {
-                        <div class="book">
+                        <div class="book" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
                             <img src=@book.Picture />
                             <h3>@book.Title</h3>
                             <h5>@book.AuthorName</h5>
+                            <a asp-area=""
+                               asp-controller="Book"
+                               asp-action="Edit"
+                               asp-route-id="@book.Id">Go edit this book, if u don't like it so much</a>
                         </div>
                     }
                 }
@@ -107,7 +147,7 @@
             }
         </div>
 
-        <div class="bookshelf">
+        <div class="bookshelf" id="finished">
             <h2>Finished</h2>
             @if (Model.Books != null && Model.Books.Any())
             {
@@ -115,10 +155,14 @@
                 {
                     @if (book.Status == "finished")
                     {
-                        <div class="book">
+                        <div class="book" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
                             <img src=@book.Picture />
                             <h3>@book.Title</h3>
                             <h5>@book.AuthorName</h5>
+                            <a asp-area=""
+                               asp-controller="Book"
+                               asp-action="Edit"
+                               asp-route-id="@book.Id">Go edit this book, if u don't like it so much</a>
                         </div>
                     }
                 }
@@ -132,10 +176,95 @@
 
     <div class="button-login"><a class="button-login" asp-area="" asp-controller="Book" asp-action="Add">Додати книгу (це ж додаток з книжками все-таки)</a></div>
 
+
+    <!-- here goes pretty modal that will show you more information about specific book-->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="book-title"></h2>
+            <img id="book-picture" alt="book's picture"/>
+            <p id="book-author"></p>
+            <p id="book-language"></p>
+            <p id="book-genre"></p>
+            <p id="book-description"></p>
+        </div>
+    </div>
+
+
     <footer>
         <div class="company">IHateThursday</div>
         <div class="line-1"></div>
     </footer>
+
+    <script>
+
+        var books = document.getElementsByClassName("book");
+
+        let planningPlace = document.getElementById("planning");
+        let progressPlace = document.getElementById("in_progress");
+        let finishedPlace = document.getElementById("finished");
+
+        for (book of books) {
+            book.addEventListener('dragstart', function (e) {
+                let selected = e.target;
+
+                planningPlace.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                })
+                planningPlace.addEventListener('drop', function (e) {
+                    planningPlace.appendChild(selected);
+                    selected = null;
+                })
+
+                progressPlace.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                })
+                progressPlace.addEventListener('drop', function (e) {
+                    progressPlace.appendChild(selected);
+                    selected = null;
+                })
+
+                finishedPlace.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                })
+                finishedPlace.addEventListener('drop', function (e) {
+                    finishedPlace.appendChild(selected);
+                    selected = null;
+                })
+            })
+        }
+        console.log(planningPlace);
+        console.log(progressPlace);
+        console.log(finishedPlace);
+        console.log(books);
+
+        var modal = document.getElementById("modal");
+        var span = document.getElementsByClassName("close")[0];
+
+        function openModal(title, author, picture, language, genre, description) {
+            document.getElementById("book-title").innerHTML = title;
+            document.getElementById("book-author").innerHTML = "Author: " + author;
+            document.getElementById("book-picture").src = picture;
+            document.getElementById("book-language").innerHTML = "Language: " + language;
+            document.getElementById("book-genre").innerHTML = "Genre: " + genre;
+            document.getElementById("book-description").innerHTML = "Description: " + description;
+            modal.style.display = "block";
+            console.log('some shit was clicked');
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
 </body>
 </html>
 

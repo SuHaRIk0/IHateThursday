@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Web.Models.BookViewModel
+@{
+}
+<head>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            border: solid 1px black;
+            border-radius: 15px;
+            padding: 15px;
+            background-color: lightgray;
+        }
+
+        input {
+            margin-bottom: 10px;
+            border: solid 1px black;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+@if (Model != null)
+{
+    <form method="post">
+        <h2>Add new book: </h2>
+
+        <label>Title: </label>
+        <input type="text" id="title" asp-for="Title" />
+
+        <label>Author name: </label>
+        <input type="text" id="author_name" asp-for="AuthorName" />
+
+        <label>Picture: </label>
+        <input type="text" id="picture" asp-for="Picture" />
+
+        <label>Language: </label>
+        <input type="text" id="language" asp-for="Language" />
+
+        <label>Genre: </label>
+        <input type="text" id="genre" asp-for="Genre" />
+
+        <label>Description: </label>
+        <input type="text" id="description" asp-for="Description" />
+
+        <label>Status: </label>
+
+        <select class="form-select" aria-label="Default select example" id="status" asp-for="Status">
+            <option selected>I know it's kinda annoying, but you have to choose the status too</option>
+            <option value="planning">Planning</option>
+            <option value="in_progress">In progress</option>
+            <option value="finished">Finished</option>
+        </select>
+
+        <button type="submit">Edit</button>
+        <button class="btn btn-danger" type="submit"
+                asp-area=""
+                asp-controller="Book"
+                asp-action="Delete">
+            Delete me please i don't wanna exist in this DB anymore
+        </button>
+    </form>
+}
+else
+{
+    <p>Book not found :(</p>
+}

@@ -1,15 +1,20 @@
-﻿using Infrastructure.Data;
+﻿using Domain.Entities;
+using Humanizer.Localisation;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Web.Models;
+using Domain.IRepository;
 
 namespace Web.Controllers
 {
     public class BookController : Controller
     {
-        private readonly TopDbContext topDbContex;
-        public BookController(TopDbContext topDbContex)
+        private readonly IBookRepository bookRepository;
+
+        public BookController(IBookRepository bookRepository)
         {
-            this.topDbContex = topDbContex;
+            this.bookRepository = bookRepository;
         }
 
         [HttpGet]
@@ -20,7 +25,7 @@ namespace Web.Controllers
 
         [HttpPost]
         [ActionName("Add")]
-        public IActionResult Create(BookViewModel bookView)
+        public async Task<IActionResult> Create(BookViewModel bookView)
         {
             var book = new Domain.Entities.Book
             {
@@ -34,18 +39,75 @@ namespace Web.Controllers
                 Status = bookView.Status
             };
 
-            topDbContex.Books.Add(book);
-            topDbContex.SaveChanges();
+            await bookRepository.AddAsync(book);
 
             return View("Add");
         }
 
-        [HttpGet]
-        public IActionResult Show() 
-        {
-            var books = topDbContex.Books.ToList();
+        //[HttpGet]
+        //public async Task<IActionResult> Show() 
+        //{
+        //    var books = await bookRepository.GetBooks();
             
-            return View(books);
+        //    return View(books);
+        //}
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var book = await bookRepository.GetAsync(id);
+
+            if(book != null)
+            {
+                var editBook = new BookViewModel
+                {
+                    Id = book.Id,
+                    Title = book.Title,
+                    AuthorName = book.AuthorName,
+                    Picture = book.Picture,
+                    Language = book.LanguageBook,
+                    Genre = book.Genre,
+                    Description = book.Description,
+                    Status = book.Status
+                };
+
+                return View(editBook);
+            }
+
+            return View(null);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(BookViewModel bookViewModel)
+        {
+            var book = new Book
+            {
+                Id = bookViewModel.Id,
+                Title = bookViewModel.Title,
+                AuthorName = bookViewModel.AuthorName,
+                Picture = bookViewModel.Picture,
+                LanguageBook = bookViewModel.Language,
+                Genre = bookViewModel.Genre,
+                Description = bookViewModel.Description,
+                Status = bookViewModel.Status
+            };
+
+            var updatedBook = await bookRepository.UpdateAsync(book);
+
+            return RedirectToAction("Edit", new { id = bookViewModel.Id });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(BookViewModel bookViewModel)
+        {
+            var deletedBook = await bookRepository.DeleteAsync(bookViewModel.Id);
+
+            if(deletedBook != null)
+            {
+                return RedirectToAction("Edit", new { id = bookViewModel.Id });
+            }
+
+            return RedirectToAction("Edit", new { id = bookViewModel.Id });
         }
     }
 }

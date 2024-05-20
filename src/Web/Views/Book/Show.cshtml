@@ -38,6 +38,10 @@
                         <img src=@book.Picture/>
                         <h3>@book.Title</h3>
                         <h5>@book.AuthorName</h5>
+                        <a asp-area="" 
+                           asp-controller="Book" 
+                           asp-action="Edit"
+                           asp-route-id="@book.Id">Go edit this book, if u don't like it so much</a>
                     </div>
                 }
             }
@@ -60,6 +64,10 @@
                         <img src=@book.Picture />
                         <h3>@book.Title</h3>
                         <h5>@book.AuthorName</h5>
+                        <a asp-area="" 
+                           asp-controller="Book" 
+                           asp-action="Edit"
+                           asp-route-id="@book.Id">Go edit this book, if u don't like it so much</a>
                     </div>
                 }
             }
@@ -81,7 +89,11 @@
                     <div class="book">
                         <img src=@book.Picture />
                         <h3>@book.Title</h3>
-                        <h5>@book.AuthorName</h5>
+                        <h5>@book.AuthorName</h5
+                        <a asp-area="" 
+                           asp-controller="Book" 
+                           asp-action="Edit"
+                           asp-route-id="@book.Id">Go edit this book, if u don't like it so much</a>
                     </div>
                 }
             }

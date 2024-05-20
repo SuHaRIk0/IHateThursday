@@ -43,7 +43,13 @@
     <input type="text" id="description" asp-for="Description"/>
 
     <label>Status: </label>
-    <input type="text" id="status" asp-for="Status" />
+
+    <select class="form-select" aria-label="Default select example" id="status" asp-for="Status">
+      <option selected>I know it's kinda annoying, but you have to choose the status too</option>
+      <option value="planning">Planning</option>
+      <option value="in_progress">In progress</option>
+      <option value="finished">Finished</option>
+    </select>
 
     <button type="submit">Create</button>
 </form>
