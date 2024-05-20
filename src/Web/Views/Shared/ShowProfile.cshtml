@@ -68,12 +68,12 @@
 
         <div class="back">
             <div class="profile-info">
-                <p><strong>Name:</strong> @Model.Profile.Name</p>
+                <p><strong>Ім'я користувача:</strong> @Model.Profile.Name</p>
                 <p><strong>Tag:</strong> @Model.Profile.Tag</p>
-                <p><strong>Description:</strong> @Model.Profile.Description</p>
-                <p><strong>Genres Readed:</strong> @Model.Profile.GenresReaded</p>
-                <p><strong>Followers amount : </strong> @Model.SubInfo.Followers_amount</p>
-                <p><strong>Subscriptios amount : </strong> @Model.SubInfo.Subscribtions_amount</p>
+                <p><strong>Опис профілю:</strong> @Model.Profile.Description</p>
+                <p><strong>Вподобані жанри:</strong> @Model.Profile.GenresReaded</p>
+                <p><strong>Кількість підписників: </strong> @Model.SubInfo.Followers_amount</p>
+                <p><strong>Кількість підписок: </strong> @Model.SubInfo.Subscribtions_amount</p>
 
 
                 <form asp-action="RemoveFollower" method="post" id="followersForm">
@@ -106,7 +106,7 @@
 
             <div class="bookcase">
                 <div class="bookshelf">
-                    <h2>Planning</h2>
+                    <h2>Планую читати</h2>
                     @if (Model.Books != null && Model.Books.Any())
                     {
                         @foreach (var book in Model.Books)
@@ -123,12 +123,12 @@
                     }
                     else
                     {
-                        <p>no books here :/</p>
+                        <p>Тут немає книжок...</p>
                     }
                 </div>
 
                 <div class="bookshelf">
-                    <h2>In progress</h2>
+                    <h2>Читаю</h2>
                     @if (Model.Books != null && Model.Books.Any())
                     {
                         @foreach (var book in Model.Books)
@@ -145,12 +145,12 @@
                     }
                     else
                     {
-                        <p>no books here :/</p>
+                        <p>Тут немає книжок...</p>
                     }
                 </div>
 
                 <div class="bookshelf">
-                    <h2>Finished</h2>
+                    <h2>Прочитані</h2>
                     @if (Model.Books != null && Model.Books.Any())
                     {
                         @foreach (var book in Model.Books)
@@ -167,16 +167,13 @@
                     }
                     else
                     {
-                        <p>no books here, go read some >:(</p>
+                        <p>Тут немає книжок...</p>
                     }
                 </div>
             </div>
 
-            <div class="button-login"><a class="button-add-book" asp-area="" asp-controller="Book" asp-action="Add">Додати книгу (це ж додаток з книжками все-таки)</a></div>
+            <div class="button-login"><a class="button-add-book" asp-area="" asp-controller="Book" asp-action="Add">Додати книгу</a></div>
         </div>
     </div>
-    @* <div class="name-container">
-        <h1>I Hate Thursday</h1>
-    </div> *@
 </body>
 </html>

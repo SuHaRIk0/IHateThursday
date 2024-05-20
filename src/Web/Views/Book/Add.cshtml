@@ -1,9 +1,13 @@
 ﻿@model BookViewModel
- @using Microsoft.AspNetCore.Identity
- @using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
 
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Додати нову книжку</title>
     <style>
         body {
             background-color: #782223;
@@ -21,21 +25,29 @@
             right: 0;
             margin: auto;
             width: calc(100% - 50px);
-            height: absolute;
             background-color: #CFAE7D;
             border-radius: 20px;
             padding: 20px;
             box-sizing: border-box;
-            margin-bottom: 20px;
+        }
+
+        .columns-container {
+            display: flex;
+            justify-content: space-between;
         }
 
         .input-column {
-            flex-direction: column; 
-            margin-right: 20px; 
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            padding: 20px;
+            background-color: #CFAE7D;
+            border-radius: 20px;
         }
 
         .input-group {
-            margin-bottom: 0px;
+            margin-bottom: 20px;
         }
 
         label {
@@ -45,14 +57,15 @@
             margin-bottom: 5px; 
         }
 
-        input[type="text"] {
+        input[type="text"],
+        select {
             width: calc(100% - 20px);
             height: 38px;
             padding: 10px;
             margin-bottom: 20px;
             border: none; 
             border-radius: 20px;
-            background-color: #FFFFFF; 
+            background-color: #ffffff;
             box-sizing: border-box;
         }
 
@@ -64,108 +77,122 @@
 
         .input-container {
             display: flex;
+            justify-content: center;
             align-items: center;
+            margin-top: 20px;
+        }
+
+        .button-cancel a {
+            color: #CFAE7D;
+            text-decoration: none;
+            display: inline-block;
+            width: 10vw;
+            height: 3vw;
+            text-align: center;
+            line-height: 3vw;
+            font-size: 2vw;
         }
 
         input[type="submit"],
-        .button-cancel {
+        .button-cancel a {
             background-color: #420506;
             color: #CFAE7D;
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 16px;
             width: 20vw;
             height: 5vw;
-            align-self: flex-end;
             text-align: center;
             font-family: 'Kyiv*Type Titling';
-            font-style: normal;
             font-weight: 250;
             font-size: 2vw;
             line-height: 3vw;
             box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
-            margin-right: 50px;
+            margin-right: 20px;
+            text-decoration: none;
         }
 
-            input[type="submit"]:hover,
-        .button-cancel:hover {
-                background-color: #610809;
-            }
-
-            .button-cancel a {
-                color: #CFAE7D;
-                text-decoration: none;
-                display: inline-block;
-                width: 10vw;
-                height: 3vw;
-                text-align: center;
-                line-height: 3vw;
-                font-size: 2vw;
-            }
+        input[type="submit"]:hover,
+        .button-cancel a:hover {
+            background-color: #610809;
+        }
 
         .main-text p {
+            margin-top: 1vw;
             margin: 0;
             width: 100%;
             font-size: 5vw;
-            position: center;
             color: #610809;
+            text-align: center;
         }
+
+        .form-select {
+            margin-top: 3vw;
+            margin-right: 9vw;
+            margin-left: -3vw;
+           
+        }
+
     </style>
 </head>
-<form class="form-add" method="post">
-    <div class="main-text">
-        <p>Додай нову книжку</p>
-    </div>
-
-    <div class="input-column">
-        <div class="input-group">
-            <label for="title">Назва: </label>
-            <input type="text" id="title" asp-for="Title" />
+<body>
+    <form class="form-add" method="post">
+        <div class="main-text">
+            <p>Додай нову книжку</p>
         </div>
 
-        <div class="input-group">
-            <label for="author_name">Ім'я автора: </label>
-            <input type="text" id="author_name" asp-for="AuthorName" />
+        <div class="columns-container">
+            <div class="input-column">
+                <div class="input-group">
+                    <label for="title">Назва: </label>
+                    <input type="text" id="title" asp-for="Title" />
+                </div>
+
+                <div class="input-group">
+                    <label for="author_name">Ім'я автора: </label>
+                    <input type="text" id="author_name" asp-for="AuthorName" />
+                </div>
+
+                <div class="input-group">
+                    <label for="picture">Картинка: </label>
+                    <input type="text" id="picture" asp-for="Picture" />
+                </div>
+
+                <div class="input-group">
+                    <label for="language">Мова написання: </label>
+                    <input type="text" id="language" asp-for="Language" />
+                </div>
+            </div>
+
+            <div class="input-column">
+                <div class="input-group">
+                    <label for="genre">Жанри: </label>
+                    <input type="text" id="genre" asp-for="Genre" />
+                </div>
+
+                <div class="input-group">
+                    <label for="description">Опис: </label>
+                    <input type="text" id="description" asp-for="Description" />
+                </div>
+
+                <div class="input-group">
+                    <label for="status">Статус: </label>
+                    <select class="form-select" id="status" asp-for="Status">
+                        <option selected>Важко вирішити, але треба обрати один зі статусів</option>
+                        <option value="planning">Планую читати</option>
+                        <option value="inProgress">Читаю</option>
+                        <option value="finished">Прочитані</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
-        <div class="input-group">
-            <label for="picture">Картинка: </label>
-            <input type="text" id="picture" asp-for="Picture" />
+        <div class="input-container">
+            <input type="submit" value="Додати"/>
+            <a class="button-cancel" asp-area="" asp-controller="Profile" asp-action="ShowProfile" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Скасувати</a>
         </div>
-
-        <div class="input-group">
-            <label for="language">Мова написання: </label>
-            <input type="text" id="language" asp-for="Language" />
-        </div>
-    </div>
-
-    <div class="input-column">
-        <div class="input-group">
-            <label for="genre">Жанри: </label>
-            <input type="text" id="genre" asp-for="Genre" />
-        </div>
-
-        <div class="input-group">
-            <label for="description">Опис: </label>
-            <input type="text" id="description" asp-for="Description" />
-        </div>
-
-        <div class="input-group">
-            <label for="status">Статус: </label>
-            <select class="form-select" aria-label="Не обрано" id="status" asp-for="Status">
-                <option selected>Важко вирішити, але треба обрати один зі статусів</option>
-                <option value="planning">Планую читати</option>
-                <option value="inProgress">Читаю</option>
-                <option value="finished">Прочитані</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="input-container">
-        <input type="submit" value="Додати"/>
-        <a class="button-cancel" asp-area="" asp-controller="Profile" asp-action="ShowProfile" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Скасувати</a>
-    </div>
-    
-</form>
+    </form>
+</body>
+</html>
