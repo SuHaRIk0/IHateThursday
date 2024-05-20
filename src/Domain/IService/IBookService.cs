@@ -11,6 +11,7 @@ namespace Domain.IService
         Task<Book?> ShowBookByIdAsync(int id);
 
         Task<IEnumerable<Book>?> GetBooksByIdAsync(int id);
+
     }
 }
 

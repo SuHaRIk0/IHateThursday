@@ -52,7 +52,8 @@ namespace Web.Controllers
             topDbContex.BookStates.Add(state);
             topDbContex.SaveChanges();
 
-            return View("Add");
+            //return View("Add");
+            return RedirectToAction("ShowProfile", "Profile", new { id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))});
         }
 
         //[HttpPost]

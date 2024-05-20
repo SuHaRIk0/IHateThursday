@@ -31,10 +31,11 @@
     margin-bottom: 20px;
 }
 
-.profile-info p {
-    margin: 0;
-    width: 50%; 
-}
+    .profile-info p {
+        margin: 0;
+        width: 100%;
+        font-size: 2vw;
+    }
 
 .profile-info p:nth-child(3),
 .profile-info p:nth-child(4) {
