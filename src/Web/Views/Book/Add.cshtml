@@ -121,39 +121,46 @@
     <div class="input-column">
         <div class="input-group">
             <label for="title">Title: </label>
-            <input type="text" id="title" asp-for="Title" />
+            <input type="text" id="title" asp-for="Title" required maxlength="100" />
+            <span class="text-danger" id="title-error"></span>
         </div>
 
         <div class="input-group">
             <label for="author_name">Author name: </label>
-            <input type="text" id="author_name" asp-for="AuthorName" />
+            <input type="text" id="author_name" asp-for="AuthorName" required maxlength="100" />
+            <span class="text-danger" id="author-name-error"></span>
         </div>
 
         <div class="input-group">
             <label for="picture">Picture: </label>
-            <input type="text" id="picture" asp-for="Picture" />
+            <input type="text" id="picture" asp-for="Picture" required/>
+            <span class="text-danger" id="picture-error"></span>
         </div>
 
         <div class="input-group">
             <label for="language">Language: </label>
-            <input type="text" id="language" asp-for="Language" />
+            <input type="text" id="language" asp-for="Language" required />
+            <span class="text-danger" id="language-error"></span>
         </div>
     </div>
 
     <div class="input-column">
         <div class="input-group">
             <label for="genre">Genre: </label>
-            <input type="text" id="genre" asp-for="Genre" />
+            <input type="text" id="genre" asp-for="Genre" required />
+            <span class="text-danger" id="genre-error"></span>
         </div>
 
         <div class="input-group">
             <label for="description">Description: </label>
-            <input type="text" id="description" asp-for="Description" />
+            <input type="text" id="description" asp-for="Description" required/>
+            <span class="text-danger" id="description-error"></span>
         </div>
 
         <div class="input-group">
             <label for="status">Status: </label>
-            <input type="text" id="status" asp-for="Status" />
+            <input type="text" id="status" asp-for="Status" required />
+            <span class="text-danger" id="status-error"></span>
         </div>
     </div>
 
@@ -161,5 +168,5 @@
         <input type="submit" value="Save" />
         <a class="button-cancel" asp-area="" asp-controller="Profile" asp-action="ShowProfile" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Скасувати</a>
     </div>
-    
 </form>
+
