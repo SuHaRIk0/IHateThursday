@@ -47,19 +47,29 @@
                 <p><strong>Genres Readed : </strong> @Model.profileViewModel.Profile.GenresReaded</p>
                 <p><strong>Followers amount : </strong> @Model.subInfoViewModel.followers_amount</p>
                 <p><strong>Subscriptios amount : </strong> @Model.subInfoViewModel.subscribtions_amount</p>
-                <select id="followersDropdown" name="followersDropdown">
-                    @foreach (var follower in Model.subInfoViewModel.followers)
-                    {
-                        <option>@follower</option>
-                    }
-                </select>
 
-                <select id="subscriptionsDropdown" name="subDropdown">
-                    @foreach (var sub in Model.subInfoViewModel.subscriptions)
-                    {
-                        <option>@sub</option>
-                    }
-                </select>
+
+                <form asp-action="RemoveFollower" method="post" id="followersForm">
+                    <input type="hidden" name="currentUserId" value="@Model.profileViewModel.Profile.Id" />
+                    <select id="followersDropdown" name="followerTag">
+                        @foreach (var follower in Model.subInfoViewModel.followers)
+                        {
+                            <option value="@follower">@follower</option>
+                        }
+                    </select>
+                    <button type="submit" class="button-action">Remove Follower</button>
+                </form>
+
+                <form asp-action="Unfollow" method="post" id="subscriptionsForm">
+                    <input type="hidden" name="currentUserId" value="@Model.profileViewModel.Profile.Id" />
+                    <select id="subscriptionsDropdown" name="subscriptionTag">
+                        @foreach (var sub in Model.subInfoViewModel.subscriptions)
+                        {
+                            <option value="@sub">@sub</option>
+                        }
+                    </select>
+                    <button type="submit" class="button-action">Unfollow</button>
+                </form>
 
 
                     <!-- Button to find new friend -->

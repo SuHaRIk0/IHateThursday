@@ -9,14 +9,15 @@ namespace Domain.IRepository
 {
     public interface ISubscriptionRepository : IRepository<Subscription>
     {
-        //Task<IEnumerable<Subscription>?> GetFollowersByIdAsync(int user_id, CancellationToken cancellationToken = default);
 
-        //Task<IEnumerable<Subscription>?> GetSubscriptionsByIdAsync(int user_id, CancellationToken cancellationToken = default);
+        Task<Subscription?> GetSubscriptionByIdAsync(int follower, int userToId , CancellationToken cancellationToken = default);
 
         Task<IEnumerable<string>?> GetFollowersByIdAsync(int user_id, CancellationToken cancellationToken = default);
 
         Task<IEnumerable<string>?> GetSubscriptionsByIdAsync(int user_id, CancellationToken cancellationToken = default);
 
         Task AddSubscriptionAsync(int userId, int friendId);
+
+        Task RemoveSubscriptionAsync(Subscription subscription);
     }
 }

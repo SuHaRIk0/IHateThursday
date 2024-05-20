@@ -127,5 +127,38 @@ namespace Web.Controllers
             await _subscriptionSearchService.AddSubscriptionAsync(model.CurrentUserId, model.FoundUser.Id);
             return RedirectToAction("ShowProfile", new { id = model.CurrentUserId });
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Unfollow(int currentUserId, string subscriptionTag)
+        {
+            var subscriptionUser = await _profileService.GetByTagAsync(subscriptionTag);
+
+            if (subscriptionUser != null)
+            {
+                var subscription = await _subscriptionSearchService.GetSubscriptionByIdAsync(currentUserId, subscriptionUser.Id);
+
+                await _subscriptionSearchService.RemoveSubscriptionAsync(subscription);
+            }
+
+            return RedirectToAction("ShowProfile", new { id = currentUserId });
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveFollower(int currentUserId, string followerTag)
+        {
+            var followerUser = await _profileService.GetByTagAsync(followerTag);
+
+            if (followerUser != null)
+            {
+                var subscription = await _subscriptionSearchService.GetSubscriptionByIdAsync(followerUser.Id , currentUserId);
+
+                await _subscriptionSearchService.RemoveSubscriptionAsync(subscription);
+            }
+
+            return RedirectToAction("ShowProfile", new { id = currentUserId });
+        }
+
     }
 }

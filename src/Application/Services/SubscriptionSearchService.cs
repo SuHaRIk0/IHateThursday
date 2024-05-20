@@ -35,5 +35,16 @@ namespace Application.Services
             _subsRepository.AddSubscriptionAsync(userId, friendId);
         }
 
+        public async Task RemoveSubscriptionAsync(Subscription sub)
+        {
+            _subsRepository.RemoveSubscriptionAsync(sub);
+        }
+
+        public async Task<Subscription?> GetSubscriptionByIdAsync(int follower, int userToId, CancellationToken cancellationToken = default)
+        {
+            var sub = await _subsRepository.GetSubscriptionByIdAsync(follower,userToId);
+
+            return sub;
+        }
     }
 }

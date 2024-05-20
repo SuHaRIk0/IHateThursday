@@ -19,17 +19,12 @@ namespace Infrastructure.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<Subscription?> GetSubscriptionByIdAsync(int user_id, CancellationToken cancellationToken = default)
+        public async Task<Subscription?> GetSubscriptionByIdAsync(int followerId , int userToId, CancellationToken cancellationToken = default)
         {
             return await _dbContext.Set<Subscription>()
-               .FirstOrDefaultAsync(u => u.UserToId == user_id, cancellationToken);
+               .FirstOrDefaultAsync(u => u.UserToId == userToId && u.FollowerId == followerId , cancellationToken);
         }
 
-        public async Task<Subscription?> GetFollowerByIdAsync(int user_id, CancellationToken cancellationToken = default)
-        {
-            return await _dbContext.Set<Subscription>()
-               .FirstOrDefaultAsync(u => u.FollowerId == user_id, cancellationToken);
-        }
 
         public async Task<IEnumerable<string>> GetSubscriptionsByIdAsync(int user_id, CancellationToken cancellationToken = default)
         {
@@ -72,6 +67,18 @@ namespace Infrastructure.Repository
 
             _dbContext.Subscriptions.Add(subscription);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task RemoveSubscriptionAsync(Subscription subscription)
+        {
+           // var subscription = await _dbContext.Subscriptions
+           //    .FirstOrDefaultAsync(s => s.FollowerId == followerId && s.UserToId == userToId);
+
+            if (subscription != null)
+            {
+                _dbContext.Subscriptions.Remove(subscription);
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
 

@@ -110,6 +110,17 @@ app.UseEndpoints(endpoints =>
     name: "searchfriend",
     pattern: "Profile/SearchFriend/{id?}",
     defaults: new { controller = "Profile", action = "SearchFriend" });
+
+    endpoints.MapControllerRoute(
+    name: "unfollow",
+    pattern: "Profile/Unfollow",
+    defaults: new { controller = "Profile", action = "Unfollow" });
+
+    endpoints.MapControllerRoute(
+        name: "removefollower",
+        pattern: "Profile/RemoveFollower",
+        defaults: new { controller = "Profile", action = "RemoveFollower" });
+
 });
 
 app.Run();
