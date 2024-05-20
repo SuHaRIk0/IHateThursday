@@ -8,7 +8,7 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="~/Web.styles.css" asp-append-version="true" />
     <style>
-        .button-edit-profile, .button-add-book {
+        .button-edit-profile, .button-add-book, .button-admin{
             background-color: #420506;
             color: #CFAE7D;
             padding: 10px 20px;
@@ -26,19 +26,26 @@
             box-shadow: 0px 1vw 1vw rgba(0, 0, 0, 0.25);
         }
 
-            .button-edit-profile:hover, .button-add-book:hover {
+            .button-edit-profile:hover, .button-add-book:hover, .button-admin:hover {
                 background-color: #610809;
             }
 
-            .button-edit-profile a, .button-add-book a {
+            .button-edit-profile a, .button-add-book a, .button-admin a {
                 color: #CFAE7D;
                 text-decoration: none;
             }
     </style>
+    
 </head>
 <body>
+    
     <div class="profile-container">
-
+        @if (Model.profileViewModel.IsAdmin)
+        {
+            <div class="button-admin">
+                <a class="button-admin" asp-area="" asp-controller="Admin" asp-action="ControlPanel" asp-route-id="@Model.profileViewModel.Profile.Id">Панель Керування</a>
+            </div>
+        }
         <div class="back">
             <div>
                 <p><strong>Name : </strong> @Model.profileViewModel.Profile.Name</p>

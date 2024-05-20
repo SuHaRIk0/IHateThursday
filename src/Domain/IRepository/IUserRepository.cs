@@ -9,6 +9,7 @@ namespace Domain.IRepository
         Task<bool> EditByIdAsync(int id, CommonUser updatedUser, CancellationToken cancellationToken = default);
         Task<CommonUser?> ShowByIdAsync(int id, CancellationToken cancellationToken = default);
         Task<CommonUser?> GetByTagAsync(string tag, CancellationToken cancellationToken = default);
+        Task<bool> DeleteByIdAsync(int id, CancellationToken cancellationToken = default);
 
     }
 }

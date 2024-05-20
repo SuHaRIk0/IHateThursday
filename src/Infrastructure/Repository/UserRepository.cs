@@ -41,5 +41,31 @@ namespace Infrastructure.Repository
             return await _dbContext.Set<CommonUser>()
                 .FirstOrDefaultAsync(u => tag.Contains(u.Tag), cancellationToken);
         }
+
+        public async Task<bool> DeleteByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var isUser = await _dbContext.Set<CommonUser>()
+                    .AnyAsync(u => u.Id == id, cancellationToken);
+                if (!isUser)
+                {
+                    return isUser;
+                }
+
+                var user = await _dbContext.Set<CommonUser>()
+                    .FirstAsync(u => u.Id == id, cancellationToken);
+
+
+                _dbContext.Set<CommonUser>().Remove(user);
+                await _dbContext.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

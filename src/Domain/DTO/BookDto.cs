@@ -4,7 +4,7 @@ namespace Domain.DTO
 {
     public class BookDto
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string AuthorName { get; set; }
         public string Title { get; set; }
         public string Picture { get; set; }
@@ -15,7 +15,7 @@ namespace Domain.DTO
 
         public BookDto(Book book) 
         {
-            //Id = book.Id;
+            Id = book.Id;
             AuthorName = book.AuthorName;
             Title = book.Title;
             Picture = book.Picture;

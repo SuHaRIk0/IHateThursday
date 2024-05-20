@@ -71,5 +71,30 @@ namespace Infrastructure.Repository
             return books;
         }
 
+        public async Task<bool> DeleteBookByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var isBook = await _dbContext.Set<Book>()
+                    .AnyAsync(b => b.Id == id, cancellationToken);
+                if (!isBook)
+                {
+                    return isBook;
+                }
+
+                var book = await _dbContext.Set<Book>()
+                    .FirstAsync(b => b.Id == id, cancellationToken);
+
+
+                _dbContext.Set<Book>().Remove(book);
+                await _dbContext.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }
