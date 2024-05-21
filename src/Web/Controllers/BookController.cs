@@ -5,16 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web.Models;
 using Domain.IRepository;
+using Domain.IService;
 
 namespace Web.Controllers
 {
     public class BookController : Controller
     {
-        private readonly IBookRepository bookRepository;
+        private readonly IBookService _bookService;
 
-        public BookController(IBookRepository bookRepository)
+        public BookController(IBookService bookService)
         {
-            this.bookRepository = bookRepository;
+            _bookService = bookService;
         }
 
         [HttpGet]
@@ -39,7 +40,8 @@ namespace Web.Controllers
                 Status = bookView.Status
             };
 
-            await bookRepository.AddAsync(book);
+            await _bookService.AddAsync(book);
+            //await bookRepository.AddAsync(book);
 
             return View("Add");
         }
@@ -55,7 +57,7 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var book = await bookRepository.GetAsync(id);
+            var book = await _bookService.ShowBookByIdAsync(id);
 
             if(book != null)
             {
@@ -92,7 +94,8 @@ namespace Web.Controllers
                 Status = bookViewModel.Status
             };
 
-            var updatedBook = await bookRepository.UpdateAsync(book);
+            var updatedBook = await _bookService.EditBookByIdAsync(book.Id, book);
+            //var updatedBook = await bookRepository.UpdateAsync(book);
 
             return RedirectToAction("Edit", new { id = bookViewModel.Id });
         }
@@ -100,9 +103,9 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(BookViewModel bookViewModel)
         {
-            var deletedBook = await bookRepository.DeleteAsync(bookViewModel.Id);
+            var deletedBook = await _bookService.DeleteAsync(bookViewModel.Id);
 
-            if(deletedBook != null)
+            if(deletedBook != false)
             {
                 return RedirectToAction("Edit", new { id = bookViewModel.Id });
             }

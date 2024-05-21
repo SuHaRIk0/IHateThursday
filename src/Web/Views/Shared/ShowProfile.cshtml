@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
     @*     <style>
     body {
     background-color: #782223;
@@ -103,7 +107,7 @@
                 {
                     @if (book.Status == "planning")
                     {
-                        <div class="book" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
+                        <div class="book draggable" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
                             <img src=@book.Picture />
                             <h3>@book.Title</h3>
                             <h5>@book.AuthorName</h5>
@@ -129,7 +133,7 @@
                 {
                     @if (book.Status == "in_progress")
                     {
-                        <div class="book" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
+                        <div class="book draggable" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
                             <img src=@book.Picture />
                             <h3>@book.Title</h3>
                             <h5>@book.AuthorName</h5>
@@ -155,7 +159,7 @@
                 {
                     @if (book.Status == "finished")
                     {
-                        <div class="book" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
+                        <div class="book draggable" onclick="openModal('@book.Title', '@book.AuthorName', '@book.Picture', '@book.LanguageBook', '@book.Genre', '@book.Description')">
                             <img src=@book.Picture />
                             <h3>@book.Title</h3>
                             <h5>@book.AuthorName</h5>
@@ -200,43 +204,43 @@
 
         var books = document.getElementsByClassName("book");
 
-        let planningPlace = document.getElementById("planning");
-        let progressPlace = document.getElementById("in_progress");
-        let finishedPlace = document.getElementById("finished");
+        // let planningPlace = document.getElementById("planning");
+        // let progressPlace = document.getElementById("in_progress");
+        // let finishedPlace = document.getElementById("finished");
 
-        for (book of books) {
-            book.addEventListener('dragstart', function (e) {
-                let selected = e.target;
+        // for (book of books) {
+        //     book.addEventListener('dragstart', function (e) {
+        //         let selected = e.target;
 
-                planningPlace.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                })
-                planningPlace.addEventListener('drop', function (e) {
-                    planningPlace.appendChild(selected);
-                    selected = null;
-                })
+        //         planningPlace.addEventListener('dragover', function (e) {
+        //             e.preventDefault();
+        //         })
+        //         planningPlace.addEventListener('drop', function (e) {
+        //             planningPlace.appendChild(selected);
+        //             selected = null;
+        //         })
 
-                progressPlace.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                })
-                progressPlace.addEventListener('drop', function (e) {
-                    progressPlace.appendChild(selected);
-                    selected = null;
-                })
+        //         progressPlace.addEventListener('dragover', function (e) {
+        //             e.preventDefault();
+        //         })
+        //         progressPlace.addEventListener('drop', function (e) {
+        //             progressPlace.appendChild(selected);
+        //             selected = null;
+        //         })
 
-                finishedPlace.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                })
-                finishedPlace.addEventListener('drop', function (e) {
-                    finishedPlace.appendChild(selected);
-                    selected = null;
-                })
-            })
-        }
-        console.log(planningPlace);
-        console.log(progressPlace);
-        console.log(finishedPlace);
-        console.log(books);
+        //         finishedPlace.addEventListener('dragover', function (e) {
+        //             e.preventDefault();
+        //         })
+        //         finishedPlace.addEventListener('drop', function (e) {
+        //             finishedPlace.appendChild(selected);
+        //             selected = null;
+        //         })
+        //     })
+        // }
+        // console.log(planningPlace);
+        // console.log(progressPlace);
+        // console.log(finishedPlace);
+        // console.log(books);
 
         var modal = document.getElementById("modal");
         var span = document.getElementsByClassName("close")[0];
@@ -249,20 +253,60 @@
             document.getElementById("book-genre").innerHTML = "Genre: " + genre;
             document.getElementById("book-description").innerHTML = "Description: " + description;
             modal.style.display = "block";
-            console.log('some shit was clicked');
         }
 
-        // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
         }
+
+        $(document).ready(function () {
+            $(".draggable").draggable({
+                revert: "invalid", // Snap back to original position if not dropped on a valid target
+                containment: "document", // Restrict dragging to within the document
+                helper: "clone", // Clone the dragged element
+                cursor: "move" // Set cursor to move when dragging
+            });
+
+            $(".bookshelf").droppable({
+                accept: ".draggable", // Accept only elements with class 'draggable'
+                drop: function (event, ui) {
+                    // Get the status of the target bookshelf
+                    var shelfStatus = $(this).attr("data-status");
+
+                    // Get the dropped book's ID
+                    var bookId = ui.draggable.attr("data-id");
+
+                    // Update the book's status based on the target bookshelf's status
+                    updateBookStatus(bookId, shelfStatus);
+
+                    // Append the dragged element to the droppable target
+                    $(this).append(ui.draggable);
+                }
+            });
+
+            // Function to update the book's status via AJAX
+            function updateBookStatus(bookId, status) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Book/UpdateStatus", // Adjust the URL to your controller action
+                    data: { bookId: bookId, status: status },
+                    success: function (response) {
+                        // Handle success if needed
+                        console.log("Book status updated successfully.");
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle error if needed
+                        console.error("Error updating book status:", error);
+                    }
+                });
+            }
+        });
 
     </script>
 </body>
