@@ -16,12 +16,14 @@ namespace Web.Controllers
         private readonly IBookService _bookService;
         private readonly TopDbContext topDbContex;
         private readonly ISubscriptionSearchService _subscriptionSearchService;
+        private readonly IAdminService _adminService;
 
-        public ProfileController(IProfileService profileService, IBookService bookService, ISubscriptionSearchService subscriptionSearchService, TopDbContext topDbContex)
+        public ProfileController(IProfileService profileService, IBookService bookService, ISubscriptionSearchService subscriptionSearchService, IAdminService adminService, TopDbContext topDbContex)
         {
             _profileService = profileService;
             _bookService = bookService;
             _subscriptionSearchService = subscriptionSearchService;
+            _adminService = adminService;
             this.topDbContex = topDbContex;
         }
 
@@ -31,6 +33,7 @@ namespace Web.Controllers
             var books = await _bookService.GetBooksByIdAsync(id);
             var subscribtions = await _subscriptionSearchService.GetSubscriptionsByIdAsync(id);
             var followers = await _subscriptionSearchService.GetFollowersByIdAsync(id);
+            var isAdmin = await _adminService.IsAdminAsync(id);
 
             var viewModel = new UserProfileViewModel
             {
@@ -42,8 +45,9 @@ namespace Web.Controllers
                     Subscribtions_amount = subscribtions.Count(),
                     Followers = followers.ToList(),
                     Subscriptions = subscribtions.ToList()
-                }
-        };
+                },
+                IsAdmin = isAdmin
+            };
 
             return View(viewModel);
         }

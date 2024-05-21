@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #610809;
+        }
+
+        .container {
+            display: flex;
+            /* flex-direction: column; */
+            align-items: center;
+            
+        }
+
+        .search-form {
+            margin-bottom: 20px;
+            margin-top: 15vh;
+            margin: 10vw;
+        }
+
+            .search-form input {
+                padding: 10px;
+                font-size: 16px;
+                color: gray;
+            }
+
+            .search-form button {
+                padding: 10px;
+                font-size: 16px;
+                background-color: #CFAE7D;
+                color: #420506;
+                border: none;
+                cursor: pointer;
+            }
+
+                .search-form button:hover {
+                    background-color: #420506;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="myForm" class="search-form" action="@Url.Action("GetSearchBook", "Admin")" method="get">
+            <input type="text" id="title" name="title" placeholder="Введіть назву книги" required>
+            <button type="submit" class="btn btn-primary">Шукати</button>
+        </form>
+        <form id="myForm" class="search-form" action="@Url.Action("GetSearchUser", "Admin")" method="get">
+            <input type="text" id="tag" name="tag" placeholder="Введіть тег користувача" required>
+            <button type="submit" class="btn btn-primary">Шукати</button>
+        </form>
+    </div>
+</body>
+</html>

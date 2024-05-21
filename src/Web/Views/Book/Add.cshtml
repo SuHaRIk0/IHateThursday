@@ -147,39 +147,39 @@
             <div class="input-column">
                 <div class="input-group">
                     <label for="title">Назва: </label>
-                    <input type="text" id="title" asp-for="Title" />
+                    <input type="text" id="title" asp-for="Title" required/>
                 </div>
 
                 <div class="input-group">
                     <label for="author_name">Ім'я автора: </label>
-                    <input type="text" id="author_name" asp-for="AuthorName" />
+                    <input type="text" id="author_name" asp-for="AuthorName" required />
                 </div>
 
                 <div class="input-group">
                     <label for="picture">Картинка: </label>
-                    <input type="text" id="picture" asp-for="Picture" />
+                    <input type="text" id="picture" asp-for="Picture" required />
                 </div>
 
                 <div class="input-group">
                     <label for="language">Мова написання: </label>
-                    <input type="text" id="language" asp-for="Language" />
+                    <input type="text" id="language" asp-for="Language" required />
                 </div>
             </div>
 
             <div class="input-column">
                 <div class="input-group">
                     <label for="genre">Жанри: </label>
-                    <input type="text" id="genre" asp-for="Genre" />
+                    <input type="text" id="genre" asp-for="Genre" required />
                 </div>
 
                 <div class="input-group">
                     <label for="description">Опис: </label>
-                    <input type="text" id="description" asp-for="Description" />
+                    <input type="text" id="description" asp-for="Description" required />
                 </div>
 
                 <div class="input-group">
                     <label for="status">Статус: </label>
-                    <select class="form-select" id="status" asp-for="Status">
+                    <select class="form-select" id="status" asp-for="Status" required>
                         <option selected>Важко вирішити, але треба обрати один зі статусів</option>
                         <option value="planning">Планую читати</option>
                         <option value="inProgress">Читаю</option>

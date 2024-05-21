@@ -16,7 +16,9 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true)
     .Build();
 
-string connectionString = configuration.GetConnectionString("PostgreSQLConnection");
+//string connectionString = configuration.GetConnectionString("PostgreSQLConnection");
+
+var connectionString = builder.Configuration.GetConnectionString("second_connection");
 
 builder.Services.AddDbContext<TopDbContext>(options =>
     options.UseNpgsql(connectionString));
@@ -37,17 +39,19 @@ builder.Services.AddIdentity<CommonUser, IdentityRole<int>>(options =>
 .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+
+builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IRecomendationService, RecomendationService>();
 builder.Services.AddScoped<IBookTransformService, BookTransformService>();
 builder.Services.AddScoped<IBookSearchService, BookSearchService>();
 builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 builder.Services.AddScoped<ISubscriptionSearchService, SubscriptionSearchService>();
-
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();
 
@@ -119,6 +123,11 @@ app.UseEndpoints(endpoints =>
         name: "removefollower",
         pattern: "Profile/RemoveFollower",
         defaults: new { controller = "Profile", action = "RemoveFollower" });
+
+    endpoints.MapControllerRoute(
+        name: "controlPanel",
+        pattern: "Admin/ControlPanel/{id?}",
+        defaults: new { controller = "Admin", action = "ControlPanel" });
 });
 
 app.Run();

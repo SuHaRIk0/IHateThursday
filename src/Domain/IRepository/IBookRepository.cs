@@ -15,5 +15,7 @@ namespace Domain.IRepository
         Task<Book?> ShowBookByIdAsync(int id, CancellationToken cancellationToken = default);
 
         Task<IEnumerable<Book>?> GetBooksByIdAsync(int Id, CancellationToken cancellationToken = default);
+
+        Task<bool> DeleteBookByIdAsync(int id, CancellationToken cancellationToken = default);
     }
 }
