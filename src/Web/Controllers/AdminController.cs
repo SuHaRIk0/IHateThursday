@@ -66,5 +66,11 @@ namespace Web.Controllers
 
             return RedirectToAction("ControlPanel", "Admin");
         }
+
+        [HttpGet]
+        public IActionResult HostStatus()
+        {
+            return Ok(new { status = "Host is running" });
+        }
     }
 }
