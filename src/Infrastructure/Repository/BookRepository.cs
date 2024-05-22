@@ -87,6 +87,9 @@ namespace Infrastructure.Repository
         public async Task<bool> AddAsync(Book book)
         {
             await _dbContext.Books.AddAsync(book);
+
+            var state = new BookState { Book = book };
+            await _dbContext.BookStates.AddAsync(state);
             await _dbContext.SaveChangesAsync();
             return true;
         }
@@ -127,10 +130,12 @@ namespace Infrastructure.Repository
         public async Task<Book?> DeleteAsync(int id)
         {
             var existingBook = await _dbContext.Books.FindAsync(id);
+            var state = await _dbContext.BookStates.SingleOrDefaultAsync(x => x.Book == existingBook);
 
-            if (existingBook != null)
+            if (existingBook != null && state != null)
             {
                 _dbContext.Books.Remove(existingBook);
+                _dbContext.BookStates.Remove(state);
                 await _dbContext.SaveChangesAsync();
                 return existingBook;
             }
